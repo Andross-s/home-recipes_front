@@ -1,0 +1,130 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-4) var(--space-8);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-border), var(--color-bg));
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.badge {
+  padding: 2px var(--space-3);
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  color: var(--color-text);
+}
+
+.description {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  padding-top: var(--space-4);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-lg);
+  margin: 0 0 var(--space-3);
+}
+
+.ingredientList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ingredientItem {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.ingredientAmount {
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.stepList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+}
+
+.stepItem {
+  position: relative;
+  padding-left: var(--space-8);
+  counter-increment: step;
+  line-height: 1.6;
+}
+
+.stepItem::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-surface);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .body {
+    grid-template-columns: 1fr 1.5fr;
+  }
+}

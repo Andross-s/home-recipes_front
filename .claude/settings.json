@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://home-recipes-back.onrender.com/api/recipes/6a7c279c441dbc3f11cbb032\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/Andross-s/home-recipes_back/main/src/db/seed.ts\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/Andross-s/home-recipes_back/main/src/middlewares/isValidId.ts\")",
+      "Bash(curl -s \"https://home-recipes-back.onrender.com/api/recipes/507f1f77bcf86cd799439011\")",
+      "Bash(node -e \"console.log\\(/^[0-9a-fA-F]{24}\\\\$/.test\\('6a7c279c441dbc3f11cbb032'\\)\\)\")",
+      "Bash(curl -s \"https://home-recipes-back.onrender.com/api/recipes?perPage=1\")",
+      "Bash(node -e ' *)",
+      "Bash(npm run *)",
+      "Read(//c/Users/User/AppData/Local/Temp/claude/c--Users-User-Projects-pet-home-recipes-front/ff23a803-17d3-4e0a-8f20-2924ce0f352b/scratchpad/**)",
+      "Bash(node verify-catalog.mjs)"
+    ]
+  }
+}

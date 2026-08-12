@@ -5,7 +5,41 @@
   },
   "HomePage": {
     "title": "Домашні рецепти без зайвого клопоту",
-    "subtitle": "Зберігайте улюблені страви та заготовки, шукайте нові ідеї за категоріями та інгредієнтами."
+    "subtitle": "Зберігайте улюблені страви та заготовки, шукайте нові ідеї за категоріями та інгредієнтами.",
+    "recipesGroupTitle": "Рецепти",
+    "recipesGroupDescription": "Перші та другі страви, випічка, десерти — все для щоденного столу.",
+    "conservationGroupTitle": "Консервація",
+    "conservationGroupDescription": "Соління, варення, заготовки на зиму.",
+    "latestTitle": "Останні рецепти"
+  },
+  "RecipeCard": {
+    "cookTime": "{minutes} хв"
+  },
+  "Catalog": {
+    "searchLabel": "Пошук рецептів",
+    "searchPlaceholder": "Пошук за назвою…",
+    "ingredientLabel": "Інгредієнт",
+    "ingredientPlaceholder": "Почніть вводити назву…",
+    "ingredientLoading": "Пошук…",
+    "ingredientNoResults": "Нічого не знайдено",
+    "categoriesLabel": "Категорії",
+    "allCategories": "Усі категорії",
+    "emptyTitle": "Рецептів не знайдено",
+    "emptyDescription": "Спробуйте змінити фільтри або пошуковий запит.",
+    "paginationLabel": "Сторінки",
+    "prevPage": "Назад",
+    "nextPage": "Далі",
+    "pageOf": "Сторінка {page} з {totalPages}"
+  },
+  "RecipeDetail": {
+    "cookTime": "{minutes} хв",
+    "authorLabel": "Автор: {name}",
+    "ingredientsTitle": "Інгредієнти",
+    "stepsTitle": "Приготування",
+    "addToFavorites": "До обраного",
+    "removeFromFavorites": "В обраному",
+    "loginToFavorite": "Увійдіть, щоб додати рецепт в обране.",
+    "loginLink": "Увійти"
   },
   "Navigation": {
     "home": "Головна",
