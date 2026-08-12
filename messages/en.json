@@ -38,5 +38,64 @@
   "Common": {
     "loading": "Loading…",
     "error": "Something went wrong"
+  },
+  "Auth": {
+    "loginTitle": "Log in",
+    "registerTitle": "Sign up",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "loginSubmit": "Log in",
+    "loginSubmitting": "Logging in…",
+    "registerSubmit": "Sign up",
+    "registerSubmitting": "Signing up…",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "registerLink": "Sign up",
+    "loginLink": "Log in",
+    "registerSuccessTitle": "Check your email",
+    "registerSuccessDescription": "We've sent a verification link to {email}. Follow it to activate your account.",
+    "backToLogin": "Back to login",
+    "resendVerificationPrompt": "Didn't get the email?",
+    "resendVerificationLink": "Resend it",
+    "resendVerificationSuccess": "Email sent again"
+  },
+  "Validation": {
+    "required": "This field is required",
+    "invalidEmail": "Invalid email address",
+    "passwordMinLength": "Password must be at least 8 characters",
+    "nameMinLength": "Name must be at least 2 characters"
+  },
+  "Errors": {
+    "EMAIL_ALREADY_EXISTS": "An account with this email already exists",
+    "INVALID_CREDENTIALS": "Incorrect email or password",
+    "ACCOUNT_BLOCKED": "This account has been blocked",
+    "ACCOUNT_NOT_VERIFIED": "Please verify your email to log in",
+    "INVALID_VERIFICATION_TOKEN": "This verification link is invalid",
+    "VERIFICATION_TOKEN_EXPIRED": "This verification link has expired",
+    "USER_NOT_FOUND": "User not found",
+    "EMAIL_ALREADY_VERIFIED": "Email is already verified",
+    "VERIFICATION_EMAIL_RATE_LIMITED": "A verification email was already sent recently, try again later",
+    "VALIDATION_ERROR": "Please check the form for errors",
+    "TOO_MANY_REQUESTS": "Too many attempts, please try again later",
+    "NETWORK_ERROR": "Could not reach the server",
+    "DEFAULT": "Something went wrong, please try again"
+  },
+  "VerifyEmail": {
+    "verifying": "Verifying your email…",
+    "successTitle": "Email verified",
+    "successDescription": "You can now log in to your account.",
+    "loginButton": "Log in",
+    "errorTitle": "Couldn't verify your email",
+    "resendDescription": "Enter your email to get a new verification link.",
+    "resendButton": "Resend verification email",
+    "resendSubmitting": "Sending…",
+    "resendSuccessTitle": "Email sent",
+    "resendSuccessDescription": "Check your inbox and follow the new verification link."
+  },
+  "VerificationBanner": {
+    "message": "Verify your email to get full access.",
+    "resendButton": "Resend it",
+    "resendSuccess": "Email sent"
   }
 }

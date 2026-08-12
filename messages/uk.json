@@ -38,5 +38,64 @@
   "Common": {
     "loading": "Завантаження…",
     "error": "Щось пішло не так"
+  },
+  "Auth": {
+    "loginTitle": "Увійти",
+    "registerTitle": "Реєстрація",
+    "nameLabel": "Ім'я",
+    "emailLabel": "Електронна пошта",
+    "passwordLabel": "Пароль",
+    "loginSubmit": "Увійти",
+    "loginSubmitting": "Вхід…",
+    "registerSubmit": "Зареєструватися",
+    "registerSubmitting": "Реєстрація…",
+    "noAccount": "Немає акаунту?",
+    "haveAccount": "Вже є акаунт?",
+    "registerLink": "Зареєструватися",
+    "loginLink": "Увійти",
+    "registerSuccessTitle": "Перевірте пошту",
+    "registerSuccessDescription": "Ми надіслали лист для підтвердження на {email}. Перейдіть за посиланням у листі, щоб активувати акаунт.",
+    "backToLogin": "До входу",
+    "resendVerificationPrompt": "Не отримали лист?",
+    "resendVerificationLink": "Надіслати ще раз",
+    "resendVerificationSuccess": "Лист надіслано ще раз"
+  },
+  "Validation": {
+    "required": "Обов'язкове поле",
+    "invalidEmail": "Некоректна електронна пошта",
+    "passwordMinLength": "Пароль має містити щонайменше 8 символів",
+    "nameMinLength": "Ім'я має містити щонайменше 2 символи"
+  },
+  "Errors": {
+    "EMAIL_ALREADY_EXISTS": "Користувач з такою поштою вже зареєстрований",
+    "INVALID_CREDENTIALS": "Неправильна пошта або пароль",
+    "ACCOUNT_BLOCKED": "Цей акаунт заблоковано",
+    "ACCOUNT_NOT_VERIFIED": "Підтвердіть електронну пошту, щоб увійти",
+    "INVALID_VERIFICATION_TOKEN": "Посилання для підтвердження недійсне",
+    "VERIFICATION_TOKEN_EXPIRED": "Термін дії посилання для підтвердження минув",
+    "USER_NOT_FOUND": "Користувача не знайдено",
+    "EMAIL_ALREADY_VERIFIED": "Пошту вже підтверджено",
+    "VERIFICATION_EMAIL_RATE_LIMITED": "Лист нещодавно вже надсилався, спробуйте пізніше",
+    "VALIDATION_ERROR": "Перевірте правильність заповнення форми",
+    "TOO_MANY_REQUESTS": "Забагато спроб, спробуйте пізніше",
+    "NETWORK_ERROR": "Не вдалося з'єднатися із сервером",
+    "DEFAULT": "Щось пішло не так, спробуйте ще раз"
+  },
+  "VerifyEmail": {
+    "verifying": "Підтверджуємо вашу пошту…",
+    "successTitle": "Пошту підтверджено",
+    "successDescription": "Тепер ви можете увійти в акаунт.",
+    "loginButton": "Увійти",
+    "errorTitle": "Не вдалося підтвердити пошту",
+    "resendDescription": "Введіть пошту, щоб надіслати нове посилання для підтвердження.",
+    "resendButton": "Надіслати лист повторно",
+    "resendSubmitting": "Надсилаємо…",
+    "resendSuccessTitle": "Лист надіслано",
+    "resendSuccessDescription": "Перевірте пошту та перейдіть за новим посиланням для підтвердження."
+  },
+  "VerificationBanner": {
+    "message": "Підтвердіть свою електронну пошту, щоб отримати повний доступ.",
+    "resendButton": "Надіслати ще раз",
+    "resendSuccess": "Лист надіслано"
   }
 }

@@ -4,6 +4,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { AuthProvider } from "@/context/AuthContext";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
+import VerificationBanner from "@/components/auth/VerificationBanner/VerificationBanner";
 import { routing } from "@/i18n/routing";
 import { notoSans, notoSansGeorgian } from "@/styles/fonts";
 import "@/styles/globals.css";
@@ -30,6 +31,7 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
         <NextIntlClientProvider>
           <AuthProvider>
             <Header />
+            <VerificationBanner />
             <main>{children}</main>
             <Footer />
           </AuthProvider>
