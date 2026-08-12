@@ -10,6 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { api, clearTokens, getAccessToken, setTokens, subscribeToAccessToken } from "@/lib/api";
+import { addFavorite, removeFavorite } from "@/lib/recipes";
 import type { User, UserRole } from "@/types/auth";
 
 interface LoginResponse {
@@ -29,6 +30,7 @@ interface AuthContextValue {
   logout: () => Promise<void>;
   verifyEmail: (token: string) => Promise<void>;
   resendVerification: (email: string) => Promise<void>;
+  toggleFavorite: (recipeId: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -98,6 +100,33 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await api.post("/auth/resend-verification", { email }, { auth: false });
   }, []);
 
+  // Optimistic toggle so the heart flips instantly; rolls back on failure.
+  // Kept in AuthContext (not the favorite button) since `user.favorites` is
+  // the single source of truth other pages (e.g. a future favorites list)
+  // will also read from.
+  const toggleFavorite = useCallback(
+    async (recipeId: string) => {
+      if (!user) return;
+
+      const wasFavorited = user.favorites.includes(recipeId);
+      const previousUser = user;
+      setUser({
+        ...user,
+        favorites: wasFavorited
+          ? user.favorites.filter((id) => id !== recipeId)
+          : [...user.favorites, recipeId],
+      });
+
+      try {
+        await (wasFavorited ? removeFavorite(recipeId) : addFavorite(recipeId));
+      } catch (error) {
+        setUser(previousUser);
+        throw error;
+      }
+    },
+    [user],
+  );
+
   const value = useMemo<AuthContextValue>(
     () => ({
       user,
@@ -110,8 +139,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       logout,
       verifyEmail,
       resendVerification,
+      toggleFavorite,
     }),
-    [user, accessToken, isLoading, login, register, logout, verifyEmail, resendVerification],
+    [
+      user,
+      accessToken,
+      isLoading,
+      login,
+      register,
+      logout,
+      verifyEmail,
+      resendVerification,
+      toggleFavorite,
+    ],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

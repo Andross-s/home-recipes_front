@@ -5,7 +5,41 @@
   },
   "HomePage": {
     "title": "Home cooking, made simple",
-    "subtitle": "Save your favorite dishes and preserves, and discover new ideas by category and ingredient."
+    "subtitle": "Save your favorite dishes and preserves, and discover new ideas by category and ingredient.",
+    "recipesGroupTitle": "Recipes",
+    "recipesGroupDescription": "Mains, baking, desserts — everyday dishes.",
+    "conservationGroupTitle": "Preserves",
+    "conservationGroupDescription": "Pickling, jams, and preserves for winter.",
+    "latestTitle": "Latest recipes"
+  },
+  "RecipeCard": {
+    "cookTime": "{minutes} min"
+  },
+  "Catalog": {
+    "searchLabel": "Search recipes",
+    "searchPlaceholder": "Search by title…",
+    "ingredientLabel": "Ingredient",
+    "ingredientPlaceholder": "Start typing a name…",
+    "ingredientLoading": "Searching…",
+    "ingredientNoResults": "No results",
+    "categoriesLabel": "Categories",
+    "allCategories": "All categories",
+    "emptyTitle": "No recipes found",
+    "emptyDescription": "Try changing the filters or search query.",
+    "paginationLabel": "Pages",
+    "prevPage": "Previous",
+    "nextPage": "Next",
+    "pageOf": "Page {page} of {totalPages}"
+  },
+  "RecipeDetail": {
+    "cookTime": "{minutes} min",
+    "authorLabel": "By {name}",
+    "ingredientsTitle": "Ingredients",
+    "stepsTitle": "Instructions",
+    "addToFavorites": "Add to favorites",
+    "removeFromFavorites": "In favorites",
+    "loginToFavorite": "Log in to add this recipe to favorites.",
+    "loginLink": "Log in"
   },
   "Navigation": {
     "home": "Home",

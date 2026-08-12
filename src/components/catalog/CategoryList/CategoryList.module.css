@@ -1,0 +1,22 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.link {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.link:hover {
+  background: var(--color-bg);
+}
+
+.active {
+  background: var(--color-bg);
+  color: var(--color-primary);
+  font-weight: 600;
+}

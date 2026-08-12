@@ -5,7 +5,41 @@
   },
   "HomePage": {
     "title": "სახლის კულინარია მარტივად",
-    "subtitle": "შეინახეთ საყვარელი კერძები და კონსერვები, იპოვეთ ახალი იდეები კატეგორიებისა და ინგრედიენტების მიხედვით."
+    "subtitle": "შეინახეთ საყვარელი კერძები და კონსერვები, იპოვეთ ახალი იდეები კატეგორიებისა და ინგრედიენტების მიხედვით.",
+    "recipesGroupTitle": "რეცეპტები",
+    "recipesGroupDescription": "მთავარი კერძები, გამოცხობა, დესერტები — ყოველდღიური სუფრისთვის.",
+    "conservationGroupTitle": "კონსერვაცია",
+    "conservationGroupDescription": "მარინადები, ჯემები და საზამთრო მარაგები.",
+    "latestTitle": "ბოლო რეცეპტები"
+  },
+  "RecipeCard": {
+    "cookTime": "{minutes} წთ"
+  },
+  "Catalog": {
+    "searchLabel": "რეცეპტების ძებნა",
+    "searchPlaceholder": "ძებნა სახელით…",
+    "ingredientLabel": "ინგრედიენტი",
+    "ingredientPlaceholder": "დაიწყეთ სახელის აკრეფა…",
+    "ingredientLoading": "იძებნება…",
+    "ingredientNoResults": "შედეგები არ მოიძებნა",
+    "categoriesLabel": "კატეგორიები",
+    "allCategories": "ყველა კატეგორია",
+    "emptyTitle": "რეცეპტები ვერ მოიძებნა",
+    "emptyDescription": "სცადეთ ფილტრების ან ძებნის შეცვლა.",
+    "paginationLabel": "გვერდები",
+    "prevPage": "წინა",
+    "nextPage": "შემდეგი",
+    "pageOf": "გვერდი {page} / {totalPages}"
+  },
+  "RecipeDetail": {
+    "cookTime": "{minutes} წთ",
+    "authorLabel": "ავტორი: {name}",
+    "ingredientsTitle": "ინგრედიენტები",
+    "stepsTitle": "მომზადება",
+    "addToFavorites": "რჩეულებში დამატება",
+    "removeFromFavorites": "რჩეულებშია",
+    "loginToFavorite": "შედით სისტემაში რეცეპტის რჩეულებში დასამატებლად.",
+    "loginLink": "შესვლა"
   },
   "Navigation": {
     "home": "მთავარი",

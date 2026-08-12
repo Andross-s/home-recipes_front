@@ -43,15 +43,21 @@ src/
 ├── app/
 │   ├── [locale]/           # all routes live under the locale segment
 │   │   ├── layout.tsx      # root <html>/<body>, fonts, providers, Header/Footer
-│   │   ├── page.tsx        # home page
+│   │   ├── page.tsx        # home page (group cards + latest recipes)
 │   │   ├── login/, register/, verify-email/[token]/
+│   │   ├── recipes/                 # catalog: filters, grid, pagination
+│   │   │   └── [id]/                # recipe detail
 │   │   ├── not-found.tsx   # localized 404
 │   │   └── [...rest]/      # catch-all -> triggers not-found.tsx
 │   └── not-found.tsx       # global fallback (invalid/missing locale)
 ├── components/
 │   ├── layout/               # Header, Footer, LocaleSwitcher, UserMenu
-│   └── auth/                 # LoginForm, RegisterForm, VerifyEmailView,
-│                              # VerificationBanner, PrivateRoute, AdminRoute
+│   ├── auth/                 # LoginForm, RegisterForm, VerifyEmailView,
+│   │                          # VerificationBanner, PrivateRoute, AdminRoute
+│   ├── catalog/               # GroupTabs, CategoryList, SearchBox,
+│   │                          # IngredientFilter, Pagination
+│   ├── home/                  # GroupCard
+│   └── recipes/                # RecipeCard, RecipeGrid, FavoriteButton
 ├── context/
 │   └── AuthContext.tsx      # user, accessToken, isAuthenticated, role, isLoading
 ├── hooks/
@@ -61,9 +67,11 @@ src/
 │   ├── navigation.ts        # locale-aware Link/useRouter/usePathname
 │   └── request.ts           # next-intl request config (reads the matched locale)
 ├── lib/
-│   ├── api.ts                 # typed fetch wrapper: auth header, 401 refresh, ApiError
-│   ├── errors.ts               # errorCode -> translated message
-│   └── validation.ts           # client-side form validation rules
+│   ├── api.ts                  # typed fetch wrapper: auth header, 401 refresh, ApiError
+│   ├── errors.ts                # errorCode -> translated message
+│   ├── validation.ts            # client-side form validation rules
+│   ├── localizedName.ts          # MultilingualName -> current-locale string, uk fallback
+│   ├── categories.ts, ingredients.ts, recipes.ts   # typed catalog/recipe endpoints
 ├── proxy.ts                  # next-intl locale routing (Next 16's renamed middleware)
 ├── styles/
 │   ├── globals.css           # CSS variables (colors, spacing, typography) + resets
@@ -117,9 +125,44 @@ Backend repo: https://github.com/Andross-s/home-recipes_back
   which `LoginForm` handles separately via the `ACCOUNT_NOT_VERIFIED`
   errorCode with an inline resend link).
 
+## Catalog & recipes
+
+- **`localizedName`**: categories and ingredients come back from the API
+  with all three languages at once (`{ uk, en?, ka? }` — `uk` is the only
+  one guaranteed non-empty, since an admin may not have translated a given
+  entry yet). `lib/localizedName.ts` picks the current locale's value with
+  a `uk` fallback; every place a category/ingredient name is shown
+  (recipe cards, filters, the detail page) goes through it. A recipe's
+  own `title`/`description`/`steps` are free text typed by the user, not a
+  dictionary field, so they're rendered as-is.
+- **List vs. detail population**: `GET /recipes` returns `category` and
+  `ingredients[].ingredient` as bare ids (no populate, for a lighter list
+  response); `GET /recipes/:id` populates both fully. The catalog page
+  fetches the group's categories once and resolves each card's category
+  name from an id → name map built from that list, rather than requesting
+  it per card.
+- **Filters are URL state, not component state**: group/category/search/
+  ingredient/page all live in the query string, so a filtered view is
+  shareable/bookmarkable and survives a reload. `GroupTabs`,
+  `CategoryList`, and `Pagination` are plain Server Component links (zero
+  client JS) since switching them is just a navigation; only `SearchBox`
+  (debounced) and `IngredientFilter` (debounced typeahead against
+  `GET /ingredients?search=&lang=`) need `'use client'`.
+- **Loading state**: `app/[locale]/recipes/loading.tsx` and
+  `recipes/[id]/loading.tsx` are Next.js loading boundaries — shown
+  automatically while their Server Component fetches data, no manual
+  spinner wiring needed.
+- **Favorites**: `AuthContext.toggleFavorite` owns the optimistic
+  add/remove (rolls back `user.favorites` on API failure) so favorite
+  state stays centralized wherever `user` is read, not duplicated per
+  button. `FavoriteButton` reads `user?.favorites.includes(id)` for its
+  initial state and shows an inline "log in to favorite" hint instead of
+  redirecting when a signed-out visitor clicks it.
+
 ## Not implemented yet
 
-Recipe/category pages, the profile page, favorites, and the admin panel
-are separate follow-up tasks. This covers the app shell (i18n, layout,
-navigation, API client) plus the full auth flow (register, login, silent
-refresh, email verification, route guards).
+The profile page and the admin panel are separate follow-up tasks. This
+covers the app shell (i18n, layout, navigation, API client), the full
+auth flow (register, login, silent refresh, email verification, route
+guards), and the recipe catalog (home page, filtered/paginated listing,
+recipe detail, favorites).

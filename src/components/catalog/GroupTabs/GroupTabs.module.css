@@ -1,0 +1,26 @@
+.tabs {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-1);
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.tab:hover {
+  color: var(--color-text);
+}
+
+.active {
+  background: var(--color-surface);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
