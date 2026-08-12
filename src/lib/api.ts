@@ -19,7 +19,29 @@ export class ApiError extends Error {
 // The access token only ever lives in memory (cleared on reload); the
 // refresh token is the sole piece of client-persisted auth state, mirroring
 // the backend's rotate-on-refresh session model (see session.service.ts).
+//
+// httpOnly cookies would be the safer place for the refresh token (immune to
+// XSS-driven reads), but the backend issues it as plain JSON on
+// login/refresh rather than a Set-Cookie header, so there's no server-side
+// cookie to opt into — localStorage is the only place a plain client can
+// persist it across reloads.
 let accessToken: string | null = null;
+
+type AccessTokenListener = (token: string | null) => void;
+const accessTokenListeners = new Set<AccessTokenListener>();
+
+// Lets AuthContext mirror the token into React state without owning it —
+// apiFetch is the only thing that actually mutates it (e.g. during a
+// background 401-triggered refresh).
+export function subscribeToAccessToken(listener: AccessTokenListener): () => void {
+  accessTokenListeners.add(listener);
+  return () => accessTokenListeners.delete(listener);
+}
+
+function setAccessToken(token: string | null): void {
+  accessToken = token;
+  accessTokenListeners.forEach((listener) => listener(token));
+}
 
 export function getAccessToken(): string | null {
   return accessToken;
@@ -31,14 +53,14 @@ export function getStoredRefreshToken(): string | null {
 }
 
 export function setTokens(tokens: AuthTokens): void {
-  accessToken = tokens.accessToken;
+  setAccessToken(tokens.accessToken);
   if (typeof window !== "undefined") {
     window.localStorage.setItem(REFRESH_TOKEN_STORAGE_KEY, tokens.refreshToken);
   }
 }
 
 export function clearTokens(): void {
-  accessToken = null;
+  setAccessToken(null);
   if (typeof window !== "undefined") {
     window.localStorage.removeItem(REFRESH_TOKEN_STORAGE_KEY);
   }

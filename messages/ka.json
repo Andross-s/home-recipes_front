@@ -38,5 +38,64 @@
   "Common": {
     "loading": "იტვირთება…",
     "error": "დაფიქსირდა შეცდომა"
+  },
+  "Auth": {
+    "loginTitle": "შესვლა",
+    "registerTitle": "რეგისტრაცია",
+    "nameLabel": "სახელი",
+    "emailLabel": "ელფოსტა",
+    "passwordLabel": "პაროლი",
+    "loginSubmit": "შესვლა",
+    "loginSubmitting": "შესვლა…",
+    "registerSubmit": "რეგისტრაცია",
+    "registerSubmitting": "რეგისტრირდება…",
+    "noAccount": "არ გაქვთ ანგარიში?",
+    "haveAccount": "უკვე გაქვთ ანგარიში?",
+    "registerLink": "დარეგისტრირდით",
+    "loginLink": "შედით",
+    "registerSuccessTitle": "შეამოწმეთ ელფოსტა",
+    "registerSuccessDescription": "დადასტურების ბმული გამოგზავნილია {email}-ზე. გახსენით ის ანგარიშის გასააქტიურებლად.",
+    "backToLogin": "შესვლაზე დაბრუნება",
+    "resendVerificationPrompt": "ვერ მიიღეთ წერილი?",
+    "resendVerificationLink": "ხელახლა გაგზავნა",
+    "resendVerificationSuccess": "წერილი ხელახლა გაიგზავნა"
+  },
+  "Validation": {
+    "required": "სავალდებულო ველი",
+    "invalidEmail": "არასწორი ელფოსტის მისამართი",
+    "passwordMinLength": "პაროლი უნდა შეიცავდეს მინიმუმ 8 სიმბოლოს",
+    "nameMinLength": "სახელი უნდა შეიცავდეს მინიმუმ 2 სიმბოლოს"
+  },
+  "Errors": {
+    "EMAIL_ALREADY_EXISTS": "ამ ელფოსტით მომხმარებელი უკვე რეგისტრირებულია",
+    "INVALID_CREDENTIALS": "არასწორი ელფოსტა ან პაროლი",
+    "ACCOUNT_BLOCKED": "ეს ანგარიში დაბლოკილია",
+    "ACCOUNT_NOT_VERIFIED": "შესასვლელად დაადასტურეთ თქვენი ელფოსტა",
+    "INVALID_VERIFICATION_TOKEN": "დადასტურების ბმული არასწორია",
+    "VERIFICATION_TOKEN_EXPIRED": "დადასტურების ბმულის ვადა ამოიწურა",
+    "USER_NOT_FOUND": "მომხმარებელი ვერ მოიძებნა",
+    "EMAIL_ALREADY_VERIFIED": "ელფოსტა უკვე დადასტურებულია",
+    "VERIFICATION_EMAIL_RATE_LIMITED": "წერილი ახლახან უკვე გაიგზავნა, სცადეთ მოგვიანებით",
+    "VALIDATION_ERROR": "გთხოვთ, შეამოწმოთ ფორმის სისწორე",
+    "TOO_MANY_REQUESTS": "ძალიან ბევრი მცდელობა, სცადეთ მოგვიანებით",
+    "NETWORK_ERROR": "სერვერთან დაკავშირება ვერ მოხერხდა",
+    "DEFAULT": "დაფიქსირდა შეცდომა, სცადეთ ხელახლა"
+  },
+  "VerifyEmail": {
+    "verifying": "თქვენი ელფოსტა მოწმდება…",
+    "successTitle": "ელფოსტა დადასტურდა",
+    "successDescription": "ახლა შეგიძლიათ შეხვიდეთ ანგარიშში.",
+    "loginButton": "შესვლა",
+    "errorTitle": "ელფოსტის დადასტურება ვერ მოხერხდა",
+    "resendDescription": "შეიყვანეთ ელფოსტა ახალი დადასტურების ბმულის მისაღებად.",
+    "resendButton": "წერილის ხელახლა გაგზავნა",
+    "resendSubmitting": "იგზავნება…",
+    "resendSuccessTitle": "წერილი გაიგზავნა",
+    "resendSuccessDescription": "შეამოწმეთ ელფოსტა და გახსენით ახალი დადასტურების ბმული."
+  },
+  "VerificationBanner": {
+    "message": "სრული წვდომისთვის დაადასტურეთ თქვენი ელფოსტა.",
+    "resendButton": "ხელახლა გაგზავნა",
+    "resendSuccess": "წერილი გაიგზავნა"
   }
 }

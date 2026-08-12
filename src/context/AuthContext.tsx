@@ -9,8 +9,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { api, clearTokens, setTokens } from "@/lib/api";
-import type { User } from "@/types/auth";
+import { api, clearTokens, getAccessToken, setTokens, subscribeToAccessToken } from "@/lib/api";
+import type { User, UserRole } from "@/types/auth";
 
 interface LoginResponse {
   user: User;
@@ -20,23 +20,35 @@ interface LoginResponse {
 
 interface AuthContextValue {
   user: User | null;
+  accessToken: string | null;
+  isAuthenticated: boolean;
   isLoading: boolean;
+  role: UserRole | null;
   login: (email: string, password: string) => Promise<void>;
   register: (name: string, email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
+  verifyEmail: (token: string) => Promise<void>;
+  resendVerification: (email: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [accessToken, setAccessTokenState] = useState<string | null>(getAccessToken());
   const [isLoading, setIsLoading] = useState(true);
+
+  // Mirrors lib/api.ts's in-memory token into React state — apiFetch is the
+  // source of truth (it also rewrites the token during a background 401
+  // refresh), this just makes that value observable to components.
+  useEffect(() => subscribeToAccessToken(setAccessTokenState), []);
 
   useEffect(() => {
     let cancelled = false;
 
     // No access token exists yet on load (it's memory-only); this call 401s
-    // and lets apiFetch's built-in refresh flow try the stored refresh token.
+    // and lets apiFetch's built-in refresh flow try the stored refresh token —
+    // this is the "silent login" that survives a page reload.
     api
       .get<{ user: User }>("/users/me")
       .then(({ user: me }) => {
@@ -78,9 +90,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null);
   }, []);
 
-  const value = useMemo(
-    () => ({ user, isLoading, login, register, logout }),
-    [user, isLoading, login, register, logout],
+  const verifyEmail = useCallback(async (token: string) => {
+    await api.get<void>(`/auth/verify-email/${encodeURIComponent(token)}`, { auth: false });
+  }, []);
+
+  const resendVerification = useCallback(async (email: string) => {
+    await api.post("/auth/resend-verification", { email }, { auth: false });
+  }, []);
+
+  const value = useMemo<AuthContextValue>(
+    () => ({
+      user,
+      accessToken,
+      isAuthenticated: user !== null,
+      isLoading,
+      role: user?.role ?? null,
+      login,
+      register,
+      logout,
+      verifyEmail,
+      resendVerification,
+    }),
+    [user, accessToken, isLoading, login, register, logout, verifyEmail, resendVerification],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
