@@ -1,0 +1,166 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  max-width: var(--container-max-width);
+  height: var(--header-height);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.logo {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.navToggleInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.navToggleLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.navToggleIcon,
+.navToggleIcon::before,
+.navToggleIcon::after {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: transform 0.2s ease;
+}
+
+.navToggleIcon {
+  position: relative;
+}
+
+.navToggleIcon::before,
+.navToggleIcon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.navToggleIcon::before {
+  top: -6px;
+}
+
+.navToggleIcon::after {
+  top: 6px;
+}
+
+.navToggleInput:checked ~ .navToggleLabel .navToggleIcon {
+  background: transparent;
+}
+
+.navToggleInput:checked ~ .navToggleLabel .navToggleIcon::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.navToggleInput:checked ~ .navToggleLabel .navToggleIcon::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* Mobile: <nav> is the full-width dropdown holding links + locale + auth. */
+.nav {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-2) var(--space-4) var(--space-4);
+}
+
+.navToggleInput:checked ~ .nav {
+  display: flex;
+}
+
+.navLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.navLink {
+  padding: var(--space-3) 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navLink:hover {
+  color: var(--color-primary);
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .navToggleLabel {
+    display: none;
+  }
+
+  .nav {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-6);
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .navLinks {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-5);
+  }
+
+  .navLink {
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .navActions {
+    padding-top: 0;
+  }
+}
