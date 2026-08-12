@@ -119,6 +119,15 @@ export async function apiFetch<T>(path: string, options: ApiFetchOptions = {}): 
     requestHeaders.set("Authorization", `Bearer ${accessToken}`);
   }
 
+  if (!API_BASE_URL) {
+    // Node's fetch doesn't reject a relative URL the way a browser does — it
+    // can hang well past any timeout we'd add here (observed: outlasting
+    // Next.js's own 60s static-generation limit during a build). Fail fast
+    // and explicitly instead of leaving callers to hang on a misconfigured
+    // NEXT_PUBLIC_API_URL.
+    throw new ApiError(0, "NETWORK_ERROR", "NEXT_PUBLIC_API_URL is not configured");
+  }
+
   let response: Response;
   try {
     response = await fetch(`${API_BASE_URL}/api${path}`, {
