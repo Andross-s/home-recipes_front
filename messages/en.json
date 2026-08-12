@@ -1,0 +1,42 @@
+{
+  "Metadata": {
+    "title": "Home Recipes",
+    "description": "Home recipes and preserves — save and find your favorite dishes."
+  },
+  "HomePage": {
+    "title": "Home cooking, made simple",
+    "subtitle": "Save your favorite dishes and preserves, and discover new ideas by category and ingredient."
+  },
+  "Navigation": {
+    "home": "Home",
+    "recipes": "Recipes",
+    "conservation": "Preserves",
+    "favorites": "Favorites",
+    "login": "Log in",
+    "register": "Sign up",
+    "profile": "Profile",
+    "myRecipes": "My recipes",
+    "adminPanel": "Admin panel",
+    "logout": "Log out",
+    "menu": "Menu"
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "uk": "Українська",
+    "en": "English",
+    "ka": "ქართული"
+  },
+  "Footer": {
+    "tagline": "Home recipes and preserves, all in one place.",
+    "rights": "All rights reserved."
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "It may have been removed, or the address is incorrect.",
+    "backHome": "Back to home"
+  },
+  "Common": {
+    "loading": "Loading…",
+    "error": "Something went wrong"
+  }
+}

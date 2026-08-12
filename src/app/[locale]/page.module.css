@@ -1,0 +1,19 @@
+.hero {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  margin: 0 0 var(--space-4);
+  color: var(--color-text);
+}
+
+.subtitle {
+  max-width: 560px;
+  margin: 0 auto;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+}
