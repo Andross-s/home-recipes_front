@@ -19,6 +19,17 @@ export interface RecipeIngredient {
   amount: string;
 }
 
+export const MAX_RECIPE_IMAGES = 6;
+
+export interface RecipeImage {
+  url: string;
+  // null for images migrated from the old single imageUrl field, where the
+  // original Cloudinary public_id is unknown — see the backend's
+  // migrate-recipe-images.ts. Such images can't be individually deleted or
+  // repositioned via imagesToDelete/imageOrder (both key off publicId).
+  publicId: string | null;
+}
+
 export interface Recipe {
   _id: string;
   title: string;
@@ -28,7 +39,7 @@ export interface Recipe {
   ingredients: RecipeIngredient[];
   steps: string[];
   cookTime?: number;
-  imageUrl?: string;
+  images: RecipeImage[];
   owner: { _id: string; name: string } | string;
   createdAt: string;
   updatedAt: string;

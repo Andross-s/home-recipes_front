@@ -31,6 +31,22 @@
   background: linear-gradient(135deg, var(--color-border), var(--color-bg));
 }
 
+.photoBadge {
+  position: absolute;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px var(--space-2);
+  border-radius: var(--radius-sm);
+  background: rgba(43, 33, 27, 0.65);
+  color: var(--color-surface);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  line-height: 1;
+}
+
 .body {
   display: flex;
   flex-direction: column;

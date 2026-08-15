@@ -13,6 +13,7 @@ favorites, and an admin panel.
   errors are mapped from `errorCode` to translated messages on the frontend
 - **next/font** — self-hosted Noto Sans (Latin/Cyrillic) + Noto Sans
   Georgian, so uk/en/ka all render correctly
+- **Swiper** — the multi-photo recipe gallery (touch/arrow/keyboard nav)
 - Backend: separate Node.js/Express API, consumed via a typed `fetch`
   wrapper (base URL from `NEXT_PUBLIC_API_URL`)
 - Deploy target: Vercel
@@ -46,7 +47,9 @@ src/
 │   │   ├── page.tsx        # home page (group cards + latest recipes)
 │   │   ├── login/, register/, verify-email/[token]/
 │   │   ├── recipes/                 # catalog: filters, grid, pagination
+│   │   │   ├── new/                 # create recipe (auth required)
 │   │   │   └── [id]/                # recipe detail
+│   │   │       └── edit/            # edit recipe (owner/admin only)
 │   │   ├── not-found.tsx   # localized 404
 │   │   └── [...rest]/      # catch-all -> triggers not-found.tsx
 │   └── not-found.tsx       # global fallback (invalid/missing locale)
@@ -57,7 +60,10 @@ src/
 │   ├── catalog/               # GroupTabs, CategoryList, SearchBox,
 │   │                          # IngredientFilter, Pagination
 │   ├── home/                  # GroupCard
-│   └── recipes/                # RecipeCard, RecipeGrid, FavoriteButton
+│   ├── RecipeGallery/          # Swiper-based multi-photo gallery
+│   └── recipes/                # RecipeCard, RecipeGrid, FavoriteButton,
+│                                # RecipeForm, RecipeImagesField, IngredientPicker,
+│                                # StepsField, EditRecipeGuard/Link, CreateRecipeLink
 ├── context/
 │   └── AuthContext.tsx      # user, accessToken, isAuthenticated, role, isLoading
 ├── hooks/
@@ -159,10 +165,35 @@ Backend repo: https://github.com/Andross-s/home-recipes_back
   initial state and shows an inline "log in to favorite" hint instead of
   redirecting when a signed-out visitor clicks it.
 
+## Recipe photos
+
+- A recipe has `images: { url, publicId }[]` (up to 6), not a single
+  `imageUrl` — `publicId` is `null` for photos migrated from the backend's
+  old single-image field, which the API can't individually delete or
+  reorder (it can only address photos by `publicId`). `RecipeImagesField`
+  disables the remove/drag affordances on those specific thumbnails rather
+  than offering an action that would silently fail to persist.
+- **`RecipeGallery`** (`components/RecipeGallery/`) renders a plain static
+  `next/image` for a single photo, or a Swiper carousel (touch swipe, arrow
+  navigation, pagination dots, left/right keyboard nav) for multiple —
+  each slide is its own `next/image` inside a fixed 4:3 box so paging
+  never shifts the layout.
+- **Uploading** (`RecipeForm` + `RecipeImagesField`): drag-and-drop or
+  click-to-browse, client-side type/size checks before anything reaches
+  the network, and a plain HTML5-drag reorder grid — the first photo in
+  order becomes the recipe's thumbnail. On save, new files go in a FormData
+  `images` field; in edit mode, removed/reordered *existing* photos are
+  sent as JSON-encoded `imagesToDelete`/`imageOrder` arrays of `publicId`
+  (matching `parseJsonFields` on the backend). New uploads are always
+  appended after the reordered existing ones — the backend has no way to
+  interleave them — so the form shows a note when both are present.
+
 ## Not implemented yet
 
 The profile page and the admin panel are separate follow-up tasks. This
 covers the app shell (i18n, layout, navigation, API client), the full
 auth flow (register, login, silent refresh, email verification, route
-guards), and the recipe catalog (home page, filtered/paginated listing,
-recipe detail, favorites).
+guards), the recipe catalog (home page, filtered/paginated listing,
+recipe detail, favorites), and recipe create/edit with multi-photo
+upload. There's no "delete recipe" UI yet (`lib/recipes.ts` has the
+`deleteRecipe` call ready, just no button wired to it).

@@ -13,7 +13,8 @@
     "latestTitle": "Останні рецепти"
   },
   "RecipeCard": {
-    "cookTime": "{minutes} хв"
+    "cookTime": "{minutes} хв",
+    "morePhotos": "+{count} фото"
   },
   "Catalog": {
     "searchLabel": "Пошук рецептів",
@@ -39,7 +40,50 @@
     "addToFavorites": "До обраного",
     "removeFromFavorites": "В обраному",
     "loginToFavorite": "Увійдіть, щоб додати рецепт в обране.",
-    "loginLink": "Увійти"
+    "loginLink": "Увійти",
+    "editRecipe": "Редагувати"
+  },
+  "RecipeForm": {
+    "createTitle": "Новий рецепт",
+    "editTitle": "Редагування рецепта",
+    "createLink": "+ Додати рецепт",
+    "groupLabel": "Тип",
+    "groupRecipes": "Рецепти",
+    "groupConservation": "Консервація",
+    "categoryLabel": "Категорія",
+    "categoryPlaceholder": "Оберіть категорію",
+    "titleLabel": "Назва",
+    "titleMinLength": "Назва має містити щонайменше 2 символи",
+    "titleMaxLength": "Назва занадто довга (максимум 200 символів)",
+    "descriptionLabel": "Опис",
+    "descriptionMaxLength": "Опис занадто довгий (максимум 2000 символів)",
+    "cookTimeLabel": "Час приготування (хв)",
+    "cookTimeInvalid": "Введіть додатне число",
+    "ingredientsLabel": "Інгредієнти",
+    "ingredientSearchPlaceholder": "Почніть вводити назву інгредієнта…",
+    "ingredientLoading": "Пошук…",
+    "ingredientNoResults": "Нічого не знайдено",
+    "amountPlaceholder": "Кількість, напр. 200 г",
+    "removeIngredient": "Видалити інгредієнт",
+    "ingredientAmountRequired": "Вкажіть кількість для кожного інгредієнта",
+    "stepsLabel": "Кроки приготування",
+    "stepPlaceholder": "Крок {number}…",
+    "addStep": "Додати крок",
+    "removeStep": "Видалити крок",
+    "atLeastOneStep": "Додайте хоча б один крок",
+    "imagesLabel": "Фото",
+    "dropzoneLabel": "Перетягніть фото сюди або натисніть, щоб обрати",
+    "dropzoneHint": "JPEG, PNG або WEBP, до 5 МБ, максимум {max} фото",
+    "tooManyImages": "Максимум {max} фото",
+    "invalidImageType": "Непідтримуваний формат файлу: {name}",
+    "imageTooLarge": "Файл занадто великий: {name}",
+    "newImagesAppendNote": "Нові фото додаються в кінці списку",
+    "mainPhotoBadge": "Головне",
+    "removeImage": "Видалити фото",
+    "legacyImageNote": "Це фото неможливо видалити або перемістити (стара версія)",
+    "saving": "Збереження…",
+    "createSubmit": "Створити рецепт",
+    "editSubmit": "Зберегти зміни"
   },
   "Navigation": {
     "home": "Головна",
@@ -113,6 +157,16 @@
     "VALIDATION_ERROR": "Перевірте правильність заповнення форми",
     "TOO_MANY_REQUESTS": "Забагато спроб, спробуйте пізніше",
     "NETWORK_ERROR": "Не вдалося з'єднатися із сервером",
+    "CATEGORY_NOT_FOUND": "Категорію не знайдено",
+    "CATEGORY_GROUP_MISMATCH": "Категорія не належить до обраного типу",
+    "INGREDIENT_NOT_FOUND": "Один або кілька інгредієнтів не знайдено",
+    "RECIPE_NOT_FOUND": "Рецепт не знайдено",
+    "RECIPE_ACCESS_DENIED": "Ви можете редагувати лише власні рецепти",
+    "INVALID_FILE_TYPE": "Дозволені лише зображення JPEG, PNG або WEBP",
+    "FILE_TOO_LARGE": "Розмір файлу перевищує 5 МБ",
+    "FILE_UPLOAD_ERROR": "Не вдалося завантажити файл",
+    "TOO_MANY_IMAGES": "Забагато фото (максимум 6)",
+    "INVALID_JSON_FIELD": "Помилка у даних форми",
     "DEFAULT": "Щось пішло не так, спробуйте ще раз"
   },
   "VerifyEmail": {

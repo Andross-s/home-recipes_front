@@ -4,12 +4,10 @@ import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { getIngredients } from "@/lib/ingredients";
+import { useIngredientSearch } from "@/hooks/useIngredientSearch";
 import { localizedName } from "@/lib/localizedName";
 import type { Ingredient } from "@/types/recipe";
 import styles from "./IngredientFilter.module.css";
-
-const DEBOUNCE_MS = 300;
 
 interface IngredientFilterProps {
   locale: string;
@@ -28,9 +26,7 @@ export default function IngredientFilter({
   const searchParams = useSearchParams();
 
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Ingredient[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [selected, setSelected] = useState(
     initialIngredientId && initialIngredientLabel
       ? { id: initialIngredientId, label: initialIngredientLabel }
@@ -38,34 +34,7 @@ export default function IngredientFilter({
   );
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // Dropdown only renders while `isOpen && query` is non-empty (see JSX
-    // below), so there's nothing to fetch — and nothing stale to clear —
-    // when either is false.
-    if (!isOpen || query.trim().length === 0) {
-      return;
-    }
-
-    let cancelled = false;
-    const timeout = setTimeout(() => {
-      setIsLoading(true);
-      getIngredients({ search: query.trim(), lang: locale })
-        .then((ingredients) => {
-          if (!cancelled) setResults(ingredients);
-        })
-        .catch(() => {
-          if (!cancelled) setResults([]);
-        })
-        .finally(() => {
-          if (!cancelled) setIsLoading(false);
-        });
-    }, DEBOUNCE_MS);
-
-    return () => {
-      cancelled = true;
-      clearTimeout(timeout);
-    };
-  }, [query, isOpen, locale]);
+  const { results, isLoading } = useIngredientSearch(query, locale, isOpen);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {

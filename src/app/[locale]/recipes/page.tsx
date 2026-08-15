@@ -5,6 +5,7 @@ import GroupTabs from "@/components/catalog/GroupTabs/GroupTabs";
 import IngredientFilter from "@/components/catalog/IngredientFilter/IngredientFilter";
 import Pagination from "@/components/catalog/Pagination/Pagination";
 import SearchBox from "@/components/catalog/SearchBox/SearchBox";
+import CreateRecipeLink from "@/components/recipes/CreateRecipeLink/CreateRecipeLink";
 import RecipeCard from "@/components/recipes/RecipeCard/RecipeCard";
 import RecipeGrid from "@/components/recipes/RecipeGrid/RecipeGrid";
 import { getCategories } from "@/lib/categories";
@@ -57,7 +58,10 @@ export default async function RecipesPage({
 
   return (
     <div className={styles.page}>
-      <GroupTabs activeGroup={group} search={search} />
+      <div className={styles.topBar}>
+        <GroupTabs activeGroup={group} search={search} />
+        <CreateRecipeLink />
+      </div>
 
       <div className={styles.layout}>
         <aside className={styles.sidebar}>
