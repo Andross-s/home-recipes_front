@@ -45,7 +45,8 @@ export default async function CategoryList({
             href={{ pathname: "/recipes", query: { ...baseQuery, category: category._id } }}
             className={`${styles.link} ${activeCategory === category._id ? styles.active : ""}`}
           >
-            {localizedName(category.name, locale)}
+            <span className={styles.name}>{localizedName(category.name, locale)}</span>
+            <span className={styles.count}>{category.recipeCount}</span>
           </Link>
         </li>
       ))}
