@@ -11,6 +11,7 @@ import {
 } from "react";
 import { api, clearTokens, getAccessToken, setTokens, subscribeToAccessToken } from "@/lib/api";
 import { addFavorite, removeFavorite } from "@/lib/recipes";
+import { updateAvatar as updateAvatarRequest, updateName as updateNameRequest } from "@/lib/users";
 import type { User, UserRole } from "@/types/auth";
 
 interface LoginResponse {
@@ -31,6 +32,8 @@ interface AuthContextValue {
   verifyEmail: (token: string) => Promise<void>;
   resendVerification: (email: string) => Promise<void>;
   toggleFavorite: (recipeId: string) => Promise<void>;
+  updateName: (name: string) => Promise<void>;
+  updateAvatar: (file: File) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -127,6 +130,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [user],
   );
 
+  const updateName = useCallback(async (name: string) => {
+    const updated = await updateNameRequest(name);
+    setUser(updated);
+  }, []);
+
+  const updateAvatar = useCallback(async (file: File) => {
+    const updated = await updateAvatarRequest(file);
+    setUser(updated);
+  }, []);
+
   const value = useMemo<AuthContextValue>(
     () => ({
       user,
@@ -140,6 +153,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       verifyEmail,
       resendVerification,
       toggleFavorite,
+      updateName,
+      updateAvatar,
     }),
     [
       user,
@@ -151,6 +166,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       verifyEmail,
       resendVerification,
       toggleFavorite,
+      updateName,
+      updateAvatar,
     ],
   );
 

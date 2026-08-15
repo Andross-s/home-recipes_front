@@ -85,6 +85,41 @@
     "createSubmit": "Create recipe",
     "editSubmit": "Save changes"
   },
+  "Profile": {
+    "title": "Profile",
+    "myRecipesLink": "My recipes",
+    "favoritesLink": "Favorites",
+    "emailLabel": "Email",
+    "verifiedBadge": "Email verified",
+    "unverifiedBadge": "Email not verified",
+    "nameLabel": "Name",
+    "saveName": "Save",
+    "savingName": "Saving…",
+    "nameSaved": "Name updated",
+    "avatarTitle": "Avatar",
+    "avatarAlt": "User avatar",
+    "saveAvatar": "Save",
+    "savingAvatar": "Uploading…",
+    "invalidAvatarType": "Only JPEG, PNG, or WEBP images are allowed",
+    "avatarTooLarge": "File is too large (max 5 MB)"
+  },
+  "ProfileRecipes": {
+    "title": "My recipes",
+    "addRecipe": "+ Add recipe",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleting": "Deleting…",
+    "confirmDelete": "Delete the recipe \"{title}\"? This can't be undone.",
+    "emptyTitle": "You don't have any recipes yet",
+    "emptyDescription": "Add your first recipe and it'll show up here."
+  },
+  "ProfileFavorites": {
+    "title": "Favorites",
+    "remove": "Remove from favorites",
+    "removing": "Removing…",
+    "emptyTitle": "Your favorites list is empty",
+    "emptyDescription": "Add recipes to favorites by tapping the heart on a recipe page."
+  },
   "Navigation": {
     "home": "Home",
     "recipes": "Recipes",
@@ -167,6 +202,7 @@
     "FILE_UPLOAD_ERROR": "Failed to upload the file",
     "TOO_MANY_IMAGES": "Too many photos (max 6)",
     "INVALID_JSON_FIELD": "There was a problem with the form data",
+    "AVATAR_FILE_REQUIRED": "Choose an image file",
     "DEFAULT": "Something went wrong, please try again"
   },
   "VerifyEmail": {

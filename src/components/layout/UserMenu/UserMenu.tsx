@@ -48,10 +48,10 @@ export default function UserMenu() {
         <Link href="/profile" className={styles.dropdownItem} role="menuitem">
           {t("profile")}
         </Link>
-        <Link href="/recipes/own" className={styles.dropdownItem} role="menuitem">
+        <Link href="/profile/recipes" className={styles.dropdownItem} role="menuitem">
           {t("myRecipes")}
         </Link>
-        <Link href="/favorites" className={styles.dropdownItem} role="menuitem">
+        <Link href="/profile/favorites" className={styles.dropdownItem} role="menuitem">
           {t("favorites")}
         </Link>
         {user.role === "admin" && (

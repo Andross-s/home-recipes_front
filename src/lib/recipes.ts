@@ -50,6 +50,20 @@ export function removeFavorite(id: string): Promise<void> {
   return api.delete<void>(`/recipes/favorites/${id}`);
 }
 
+// GET /recipes/own doesn't populate category/ingredients (same lighter list
+// shape as GET /recipes) — callers resolve category names from a fetched
+// categories list, same as the catalog page does.
+export function getOwnRecipes(page: number, perPage: number): Promise<PaginatedResult<Recipe>> {
+  return api.get<PaginatedResult<Recipe>>(`/recipes/own?page=${page}&perPage=${perPage}`);
+}
+
+// Unlike /recipes/own, this endpoint fully populates category/owner since it
+// isn't paginated and is only ever rendered as a full list.
+export async function getFavoriteRecipes(): Promise<Recipe[]> {
+  const { recipes } = await api.get<{ recipes: Recipe[] }>("/recipes/favorites");
+  return recipes;
+}
+
 export interface RecipeIngredientInput {
   ingredient: string;
   amount: string;

@@ -85,6 +85,41 @@
     "createSubmit": "რეცეპტის შექმნა",
     "editSubmit": "ცვლილებების შენახვა"
   },
+  "Profile": {
+    "title": "პროფილი",
+    "myRecipesLink": "ჩემი რეცეპტები",
+    "favoritesLink": "რჩეულები",
+    "emailLabel": "ელფოსტა",
+    "verifiedBadge": "ელფოსტა დადასტურებულია",
+    "unverifiedBadge": "ელფოსტა არ არის დადასტურებული",
+    "nameLabel": "სახელი",
+    "saveName": "შენახვა",
+    "savingName": "ინახება…",
+    "nameSaved": "სახელი განახლდა",
+    "avatarTitle": "ავატარი",
+    "avatarAlt": "მომხმარებლის ავატარი",
+    "saveAvatar": "შენახვა",
+    "savingAvatar": "იტვირთება…",
+    "invalidAvatarType": "დაშვებულია მხოლოდ JPEG, PNG ან WEBP ფორმატის სურათები",
+    "avatarTooLarge": "ფაილი ძალიან დიდია (მაქსიმუმ 5 მბ)"
+  },
+  "ProfileRecipes": {
+    "title": "ჩემი რეცეპტები",
+    "addRecipe": "+ რეცეპტის დამატება",
+    "edit": "რედაქტირება",
+    "delete": "წაშლა",
+    "deleting": "იშლება…",
+    "confirmDelete": "წავშალო რეცეპტი „{title}“? ამ მოქმედების გაუქმება შეუძლებელია.",
+    "emptyTitle": "თქვენ ჯერ არ გაქვთ რეცეპტები",
+    "emptyDescription": "დაამატეთ თქვენი პირველი რეცეპტი და ის აქ გამოჩნდება."
+  },
+  "ProfileFavorites": {
+    "title": "რჩეულები",
+    "remove": "რჩეულებიდან წაშლა",
+    "removing": "იშლება…",
+    "emptyTitle": "რჩეულების სია ცარიელია",
+    "emptyDescription": "დაამატეთ რეცეპტები რჩეულებში რეცეპტის გვერდზე გულის ხატულაზე დაჭერით."
+  },
   "Navigation": {
     "home": "მთავარი",
     "recipes": "რეცეპტები",
@@ -167,6 +202,7 @@
     "FILE_UPLOAD_ERROR": "ფაილის ატვირთვა ვერ მოხერხდა",
     "TOO_MANY_IMAGES": "ძალიან ბევრი ფოტო (მაქსიმუმ 6)",
     "INVALID_JSON_FIELD": "ფორმის მონაცემებში პრობლემაა",
+    "AVATAR_FILE_REQUIRED": "აირჩიეთ სურათის ფაილი",
     "DEFAULT": "დაფიქსირდა შეცდომა, სცადეთ ხელახლა"
   },
   "VerifyEmail": {
