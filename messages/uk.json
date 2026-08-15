@@ -85,6 +85,41 @@
     "createSubmit": "Створити рецепт",
     "editSubmit": "Зберегти зміни"
   },
+  "Profile": {
+    "title": "Профіль",
+    "myRecipesLink": "Мої рецепти",
+    "favoritesLink": "Обране",
+    "emailLabel": "Електронна пошта",
+    "verifiedBadge": "Пошту підтверджено",
+    "unverifiedBadge": "Пошту не підтверджено",
+    "nameLabel": "Ім'я",
+    "saveName": "Зберегти",
+    "savingName": "Збереження…",
+    "nameSaved": "Ім'я оновлено",
+    "avatarTitle": "Аватар",
+    "avatarAlt": "Аватар користувача",
+    "saveAvatar": "Зберегти",
+    "savingAvatar": "Завантаження…",
+    "invalidAvatarType": "Дозволені лише зображення JPEG, PNG або WEBP",
+    "avatarTooLarge": "Файл занадто великий (максимум 5 МБ)"
+  },
+  "ProfileRecipes": {
+    "title": "Мої рецепти",
+    "addRecipe": "+ Додати рецепт",
+    "edit": "Редагувати",
+    "delete": "Видалити",
+    "deleting": "Видалення…",
+    "confirmDelete": "Видалити рецепт «{title}»? Цю дію не можна скасувати.",
+    "emptyTitle": "У вас ще немає рецептів",
+    "emptyDescription": "Додайте свій перший рецепт, щоб він з'явився тут."
+  },
+  "ProfileFavorites": {
+    "title": "Обране",
+    "remove": "Прибрати з обраного",
+    "removing": "Видалення…",
+    "emptyTitle": "Список обраного порожній",
+    "emptyDescription": "Додавайте рецепти в обране, натискаючи на сердечко на сторінці рецепта."
+  },
   "Navigation": {
     "home": "Головна",
     "recipes": "Рецепти",
@@ -167,6 +202,7 @@
     "FILE_UPLOAD_ERROR": "Не вдалося завантажити файл",
     "TOO_MANY_IMAGES": "Забагато фото (максимум 6)",
     "INVALID_JSON_FIELD": "Помилка у даних форми",
+    "AVATAR_FILE_REQUIRED": "Оберіть файл зображення",
     "DEFAULT": "Щось пішло не так, спробуйте ще раз"
   },
   "VerifyEmail": {

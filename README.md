@@ -50,6 +50,9 @@ src/
 │   │   │   ├── new/                 # create recipe (auth required)
 │   │   │   └── [id]/                # recipe detail
 │   │   │       └── edit/            # edit recipe (owner/admin only)
+│   │   ├── profile/                 # name/avatar (Server Component shell)
+│   │   │   ├── recipes/             # own recipes (client-fetched, see below)
+│   │   │   └── favorites/           # favorited recipes (client-fetched)
 │   │   ├── not-found.tsx   # localized 404
 │   │   └── [...rest]/      # catch-all -> triggers not-found.tsx
 │   └── not-found.tsx       # global fallback (invalid/missing locale)
@@ -61,9 +64,12 @@ src/
 │   │                          # IngredientFilter, Pagination
 │   ├── home/                  # GroupCard
 │   ├── RecipeGallery/          # Swiper-based multi-photo gallery
-│   └── recipes/                # RecipeCard, RecipeGrid, FavoriteButton,
-│                                # RecipeForm, RecipeImagesField, IngredientPicker,
-│                                # StepsField, EditRecipeGuard/Link, CreateRecipeLink
+│   ├── recipes/                # RecipeCard, RecipeGrid, FavoriteButton,
+│   │                            # RecipeForm, RecipeImagesField, IngredientPicker,
+│   │                            # StepsField, EditRecipeGuard/Link, CreateRecipeLink
+│   └── profile/                # AvatarUploader, ProfileDetailsForm,
+│                                # OwnRecipesList, FavoritesList, ProfileRecipeCard,
+│                                # DeleteRecipeButton, RemoveFavoriteButton
 ├── context/
 │   └── AuthContext.tsx      # user, accessToken, isAuthenticated, role, isLoading
 ├── hooks/
@@ -77,7 +83,7 @@ src/
 │   ├── errors.ts                # errorCode -> translated message
 │   ├── validation.ts            # client-side form validation rules
 │   ├── localizedName.ts          # MultilingualName -> current-locale string, uk fallback
-│   ├── categories.ts, ingredients.ts, recipes.ts   # typed catalog/recipe endpoints
+│   ├── categories.ts, ingredients.ts, recipes.ts, users.ts   # typed API endpoints
 ├── proxy.ts                  # next-intl locale routing (Next 16's renamed middleware)
 ├── styles/
 │   ├── globals.css           # CSS variables (colors, spacing, typography) + resets
@@ -188,12 +194,41 @@ Backend repo: https://github.com/Andross-s/home-recipes_back
   appended after the reordered existing ones — the backend has no way to
   interleave them — so the form shows a note when both are present.
 
+## Profile
+
+- **`/profile`**: read-only email + verified badge, a name-edit form
+  (`PATCH /users/me`), and a self-contained avatar block
+  (`AvatarUploader` — client-side type/size check, square preview,
+  `PATCH /users/me/avatar` as multipart). Both go through
+  `AuthContext.updateName`/`updateAvatar`, which `setUser` the response so
+  the header avatar and every other `useAuth()` consumer update instantly,
+  with no reload or refetch.
+- **`/profile/recipes`** and **`/profile/favorites`**: the user's own
+  recipes (with Edit/Delete) and favorited recipes (with a remove button).
+  Deleting asks for confirmation (`window.confirm`); both actions update
+  local component state directly rather than reloading the list.
+- **Why these lists are fetched client-side, not in the page's Server
+  Component** (unlike every other data-fetching page in this app):
+  `GET /recipes/own` and `GET /recipes/favorites` require the caller's
+  access token, which — per the [Auth](#auth) section above — only ever
+  lives in the browser's in-memory `lib/api.ts` state. A Server Component
+  fetching it at request time (or at build time, for static generation)
+  runs on the server with no access to that token and always gets a 401 —
+  this is exactly what broke `next build` when these pages were first
+  written as ordinary `await getX()` Server Components. `OwnRecipesList`
+  and `FavoritesList` are `"use client"` and fetch in a `useEffect` after
+  `PrivateRoute` confirms a signed-in user, the same pattern `AuthContext`
+  itself uses for the silent-login `/users/me` call. `RecipeCard` (an
+  async Server Component, since it uses `getTranslations`) can't be
+  rendered from these — `ProfileRecipeCard` is a client-safe twin that
+  reuses `RecipeCard`'s own CSS Module instead of duplicating styles.
+
 ## Not implemented yet
 
-The profile page and the admin panel are separate follow-up tasks. This
-covers the app shell (i18n, layout, navigation, API client), the full
-auth flow (register, login, silent refresh, email verification, route
-guards), the recipe catalog (home page, filtered/paginated listing,
-recipe detail, favorites), and recipe create/edit with multi-photo
-upload. There's no "delete recipe" UI yet (`lib/recipes.ts` has the
-`deleteRecipe` call ready, just no button wired to it).
+The admin panel is a separate follow-up task. Everything else from the
+original scope is done: the app shell (i18n, layout, navigation, API
+client), the full auth flow (register, login, silent refresh, email
+verification, route guards), the recipe catalog (home page,
+filtered/paginated listing, recipe detail, favorites), recipe create/edit
+with multi-photo upload, and the profile pages (name/avatar, own recipes
+with delete, favorites with remove).

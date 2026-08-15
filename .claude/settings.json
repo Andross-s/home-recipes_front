@@ -12,7 +12,8 @@
       "Read(//c/Users/User/AppData/Local/Temp/claude/c--Users-User-Projects-pet-home-recipes-front/ff23a803-17d3-4e0a-8f20-2924ce0f352b/scratchpad/**)",
       "Bash(node verify-catalog.mjs)",
       "Bash(node -e \"console.log\\(require\\('./node_modules/swiper/package.json'\\).version\\)\")",
-      "Bash(node -e \"console.log\\(Object.keys\\(require\\('./node_modules/swiper/package.json'\\).exports || {}\\).slice\\(0,20\\)\\)\")"
+      "Bash(node -e \"console.log\\(Object.keys\\(require\\('./node_modules/swiper/package.json'\\).exports || {}\\).slice\\(0,20\\)\\)\")",
+      "Read(//c/Users/User/Projects/pet/home-recipes_back/**)"
     ]
   }
 }
