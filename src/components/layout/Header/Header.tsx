@@ -1,6 +1,9 @@
 import { getTranslations } from "next-intl/server";
+import { Suspense } from "react";
 import { Link } from "@/i18n/navigation";
 import LocaleSwitcher from "@/components/layout/LocaleSwitcher/LocaleSwitcher";
+import NavLinks from "@/components/layout/NavLinks/NavLinks";
+import navLinksStyles from "@/components/layout/NavLinks/NavLinks.module.css";
 import UserMenu from "@/components/layout/UserMenu/UserMenu";
 import styles from "./Header.module.css";
 
@@ -26,20 +29,36 @@ export default async function Header() {
           together with the links instead of crowding the 390px header row.
         */}
         <nav className={styles.nav} aria-label={t("menu")}>
-          <div className={styles.navLinks}>
-            <Link href="/" className={styles.navLink}>
-              {t("home")}
-            </Link>
-            <Link href="/recipes" className={styles.navLink}>
-              {t("recipes")}
-            </Link>
-            <Link href="/conservation" className={styles.navLink}>
-              {t("conservation")}
-            </Link>
-            <Link href="/favorites" className={styles.navLink}>
-              {t("favorites")}
-            </Link>
-          </div>
+          {/* NavLinks reads useSearchParams() to highlight the active group,
+              which forces a client bailout on static pages unless wrapped in
+              Suspense — the fallback mirrors the same links unhighlighted so
+              there's no layout shift while it resolves. */}
+          <Suspense
+            fallback={
+              <div className={navLinksStyles.navLinks}>
+                <Link href="/" className={navLinksStyles.navLink}>
+                  {t("home")}
+                </Link>
+                <Link
+                  href={{ pathname: "/recipes", query: { group: "recipes" } }}
+                  className={navLinksStyles.navLink}
+                >
+                  {t("recipes")}
+                </Link>
+                <Link
+                  href={{ pathname: "/recipes", query: { group: "conservation" } }}
+                  className={navLinksStyles.navLink}
+                >
+                  {t("conservation")}
+                </Link>
+                <Link href="/profile/favorites" className={navLinksStyles.navLink}>
+                  {t("favorites")}
+                </Link>
+              </div>
+            }
+          >
+            <NavLinks />
+          </Suspense>
           <div className={styles.navActions}>
             <LocaleSwitcher />
             <UserMenu />

@@ -7,6 +7,7 @@ export interface Category {
   name: MultilingualName;
   group: Group;
   imageUrl?: string;
+  recipeCount: number;
 }
 
 export interface Ingredient {

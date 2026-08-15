@@ -1,0 +1,33 @@
+.navLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.navLink {
+  padding: var(--space-3) 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navLink:hover {
+  color: var(--color-primary);
+}
+
+.navLinkActive {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .navLinks {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-5);
+  }
+
+  .navLink {
+    padding: 0;
+    border-bottom: none;
+  }
+}
