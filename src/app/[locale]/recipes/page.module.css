@@ -7,6 +7,18 @@
   gap: var(--space-5);
 }
 
+.topBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.topBar > :first-child {
+  flex: 1;
+  min-width: 220px;
+}
+
 .layout {
   display: flex;
   flex-direction: column;

@@ -1,0 +1,58 @@
+.singleSlide {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.swiper {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-bg);
+
+  --swiper-navigation-color: var(--color-surface);
+  --swiper-navigation-size: 20px;
+  --swiper-pagination-color: var(--color-surface);
+  --swiper-pagination-bullet-inactive-color: var(--color-surface);
+  --swiper-pagination-bullet-inactive-opacity: 0.5;
+}
+
+.slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-border), var(--color-bg));
+}
+
+/* Swiper renders its own (unscoped) classnames for nav/pagination controls. */
+.swiper :global(.swiper-button-next),
+.swiper :global(.swiper-button-prev) {
+  width: 40px;
+  height: 40px;
+  background: rgba(43, 33, 27, 0.4);
+  border-radius: 50%;
+  backdrop-filter: blur(2px);
+}
+
+.swiper :global(.swiper-button-next)::after,
+.swiper :global(.swiper-button-prev)::after {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.swiper :global(.swiper-pagination-bullet) {
+  box-shadow: 0 0 0 1px rgba(43, 33, 27, 0.3);
+}

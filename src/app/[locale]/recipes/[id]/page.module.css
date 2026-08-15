@@ -4,25 +4,6 @@
   padding: var(--space-5) var(--space-4) var(--space-8);
 }
 
-.imageWrapper {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--color-bg);
-}
-
-.image {
-  object-fit: cover;
-}
-
-.imagePlaceholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, var(--color-border), var(--color-bg));
-}
-
 .content {
   display: flex;
   flex-direction: column;
@@ -57,6 +38,13 @@
   margin: 0;
   color: var(--color-text-muted);
   font-size: var(--font-size-lg);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
 }
 
 .body {

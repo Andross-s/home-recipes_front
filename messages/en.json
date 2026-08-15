@@ -13,7 +13,8 @@
     "latestTitle": "Latest recipes"
   },
   "RecipeCard": {
-    "cookTime": "{minutes} min"
+    "cookTime": "{minutes} min",
+    "morePhotos": "+{count} photos"
   },
   "Catalog": {
     "searchLabel": "Search recipes",
@@ -39,7 +40,50 @@
     "addToFavorites": "Add to favorites",
     "removeFromFavorites": "In favorites",
     "loginToFavorite": "Log in to add this recipe to favorites.",
-    "loginLink": "Log in"
+    "loginLink": "Log in",
+    "editRecipe": "Edit"
+  },
+  "RecipeForm": {
+    "createTitle": "New recipe",
+    "editTitle": "Edit recipe",
+    "createLink": "+ Add recipe",
+    "groupLabel": "Type",
+    "groupRecipes": "Recipes",
+    "groupConservation": "Preserves",
+    "categoryLabel": "Category",
+    "categoryPlaceholder": "Choose a category",
+    "titleLabel": "Title",
+    "titleMinLength": "Title must be at least 2 characters",
+    "titleMaxLength": "Title is too long (max 200 characters)",
+    "descriptionLabel": "Description",
+    "descriptionMaxLength": "Description is too long (max 2000 characters)",
+    "cookTimeLabel": "Cook time (min)",
+    "cookTimeInvalid": "Enter a positive number",
+    "ingredientsLabel": "Ingredients",
+    "ingredientSearchPlaceholder": "Start typing an ingredient name…",
+    "ingredientLoading": "Searching…",
+    "ingredientNoResults": "No results",
+    "amountPlaceholder": "Amount, e.g. 200 g",
+    "removeIngredient": "Remove ingredient",
+    "ingredientAmountRequired": "Enter an amount for every ingredient",
+    "stepsLabel": "Steps",
+    "stepPlaceholder": "Step {number}…",
+    "addStep": "Add step",
+    "removeStep": "Remove step",
+    "atLeastOneStep": "Add at least one step",
+    "imagesLabel": "Photos",
+    "dropzoneLabel": "Drag photos here or click to choose",
+    "dropzoneHint": "JPEG, PNG or WEBP, up to 5 MB, max {max} photos",
+    "tooManyImages": "Maximum {max} photos",
+    "invalidImageType": "Unsupported file format: {name}",
+    "imageTooLarge": "File is too large: {name}",
+    "newImagesAppendNote": "New photos are added at the end of the list",
+    "mainPhotoBadge": "Main",
+    "removeImage": "Remove photo",
+    "legacyImageNote": "This photo can't be removed or reordered (legacy upload)",
+    "saving": "Saving…",
+    "createSubmit": "Create recipe",
+    "editSubmit": "Save changes"
   },
   "Navigation": {
     "home": "Home",
@@ -113,6 +157,16 @@
     "VALIDATION_ERROR": "Please check the form for errors",
     "TOO_MANY_REQUESTS": "Too many attempts, please try again later",
     "NETWORK_ERROR": "Could not reach the server",
+    "CATEGORY_NOT_FOUND": "Category not found",
+    "CATEGORY_GROUP_MISMATCH": "This category doesn't belong to the selected type",
+    "INGREDIENT_NOT_FOUND": "One or more ingredients weren't found",
+    "RECIPE_NOT_FOUND": "Recipe not found",
+    "RECIPE_ACCESS_DENIED": "You can only edit your own recipes",
+    "INVALID_FILE_TYPE": "Only JPEG, PNG, or WEBP images are allowed",
+    "FILE_TOO_LARGE": "File size exceeds 5 MB",
+    "FILE_UPLOAD_ERROR": "Failed to upload the file",
+    "TOO_MANY_IMAGES": "Too many photos (max 6)",
+    "INVALID_JSON_FIELD": "There was a problem with the form data",
     "DEFAULT": "Something went wrong, please try again"
   },
   "VerifyEmail": {

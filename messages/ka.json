@@ -13,7 +13,8 @@
     "latestTitle": "ბოლო რეცეპტები"
   },
   "RecipeCard": {
-    "cookTime": "{minutes} წთ"
+    "cookTime": "{minutes} წთ",
+    "morePhotos": "+{count} ფოტო"
   },
   "Catalog": {
     "searchLabel": "რეცეპტების ძებნა",
@@ -39,7 +40,50 @@
     "addToFavorites": "რჩეულებში დამატება",
     "removeFromFavorites": "რჩეულებშია",
     "loginToFavorite": "შედით სისტემაში რეცეპტის რჩეულებში დასამატებლად.",
-    "loginLink": "შესვლა"
+    "loginLink": "შესვლა",
+    "editRecipe": "რედაქტირება"
+  },
+  "RecipeForm": {
+    "createTitle": "ახალი რეცეპტი",
+    "editTitle": "რეცეპტის რედაქტირება",
+    "createLink": "+ რეცეპტის დამატება",
+    "groupLabel": "ტიპი",
+    "groupRecipes": "რეცეპტები",
+    "groupConservation": "კონსერვაცია",
+    "categoryLabel": "კატეგორია",
+    "categoryPlaceholder": "აირჩიეთ კატეგორია",
+    "titleLabel": "სახელი",
+    "titleMinLength": "სახელი უნდა შეიცავდეს მინიმუმ 2 სიმბოლოს",
+    "titleMaxLength": "სახელი ძალიან გრძელია (მაქსიმუმ 200 სიმბოლო)",
+    "descriptionLabel": "აღწერა",
+    "descriptionMaxLength": "აღწერა ძალიან გრძელია (მაქსიმუმ 2000 სიმბოლო)",
+    "cookTimeLabel": "მომზადების დრო (წთ)",
+    "cookTimeInvalid": "შეიყვანეთ დადებითი რიცხვი",
+    "ingredientsLabel": "ინგრედიენტები",
+    "ingredientSearchPlaceholder": "დაიწყეთ ინგრედიენტის სახელის აკრეფა…",
+    "ingredientLoading": "იძებნება…",
+    "ingredientNoResults": "შედეგები არ მოიძებნა",
+    "amountPlaceholder": "რაოდენობა, მაგ. 200 გ",
+    "removeIngredient": "ინგრედიენტის წაშლა",
+    "ingredientAmountRequired": "მიუთითეთ რაოდენობა ყველა ინგრედიენტისთვის",
+    "stepsLabel": "მომზადების ეტაპები",
+    "stepPlaceholder": "ეტაპი {number}…",
+    "addStep": "ეტაპის დამატება",
+    "removeStep": "ეტაპის წაშლა",
+    "atLeastOneStep": "დაამატეთ მინიმუმ ერთი ეტაპი",
+    "imagesLabel": "ფოტოები",
+    "dropzoneLabel": "გადმოიტანეთ ფოტოები აქ ან დააჭირეთ ასარჩევად",
+    "dropzoneHint": "JPEG, PNG ან WEBP, მაქსიმუმ 5 მბ, მაქსიმუმ {max} ფოტო",
+    "tooManyImages": "მაქსიმუმ {max} ფოტო",
+    "invalidImageType": "მხარდაუჭერელი ფორმატი: {name}",
+    "imageTooLarge": "ფაილი ძალიან დიდია: {name}",
+    "newImagesAppendNote": "ახალი ფოტოები ემატება სიის ბოლოში",
+    "mainPhotoBadge": "მთავარი",
+    "removeImage": "ფოტოს წაშლა",
+    "legacyImageNote": "ამ ფოტოს წაშლა ან გადაადგილება შეუძლებელია (ძველი ვერსია)",
+    "saving": "ინახება…",
+    "createSubmit": "რეცეპტის შექმნა",
+    "editSubmit": "ცვლილებების შენახვა"
   },
   "Navigation": {
     "home": "მთავარი",
@@ -113,6 +157,16 @@
     "VALIDATION_ERROR": "გთხოვთ, შეამოწმოთ ფორმის სისწორე",
     "TOO_MANY_REQUESTS": "ძალიან ბევრი მცდელობა, სცადეთ მოგვიანებით",
     "NETWORK_ERROR": "სერვერთან დაკავშირება ვერ მოხერხდა",
+    "CATEGORY_NOT_FOUND": "კატეგორია ვერ მოიძებნა",
+    "CATEGORY_GROUP_MISMATCH": "ეს კატეგორია არჩეულ ტიპს არ ეკუთვნის",
+    "INGREDIENT_NOT_FOUND": "ერთი ან რამდენიმე ინგრედიენტი ვერ მოიძებნა",
+    "RECIPE_NOT_FOUND": "რეცეპტი ვერ მოიძებნა",
+    "RECIPE_ACCESS_DENIED": "შეგიძლიათ მხოლოდ საკუთარი რეცეპტების რედაქტირება",
+    "INVALID_FILE_TYPE": "დაშვებულია მხოლოდ JPEG, PNG ან WEBP ფორმატის სურათები",
+    "FILE_TOO_LARGE": "ფაილის ზომა აღემატება 5 მბ-ს",
+    "FILE_UPLOAD_ERROR": "ფაილის ატვირთვა ვერ მოხერხდა",
+    "TOO_MANY_IMAGES": "ძალიან ბევრი ფოტო (მაქსიმუმ 6)",
+    "INVALID_JSON_FIELD": "ფორმის მონაცემებში პრობლემაა",
     "DEFAULT": "დაფიქსირდა შეცდომა, სცადეთ ხელახლა"
   },
   "VerifyEmail": {
