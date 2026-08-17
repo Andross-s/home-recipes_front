@@ -13,7 +13,9 @@
       "Bash(node verify-catalog.mjs)",
       "Bash(node -e \"console.log\\(require\\('./node_modules/swiper/package.json'\\).version\\)\")",
       "Bash(node -e \"console.log\\(Object.keys\\(require\\('./node_modules/swiper/package.json'\\).exports || {}\\).slice\\(0,20\\)\\)\")",
-      "Read(//c/Users/User/Projects/pet/home-recipes_back/**)"
+      "Read(//c/Users/User/Projects/pet/home-recipes_back/**)",
+      "Read(//c/Users/User/Projects/pet/home-recipes_back/src/routes/**)",
+      "Read(//c/Users/User/Projects/pet/home-recipes_back/src/services/**)"
     ]
   }
 }

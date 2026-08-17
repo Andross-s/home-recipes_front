@@ -13,6 +13,7 @@ export interface Category {
 export interface Ingredient {
   _id: string;
   name: MultilingualName;
+  imageUrl?: string;
 }
 
 export interface RecipeIngredient {

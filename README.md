@@ -53,6 +53,9 @@ src/
 │   │   ├── profile/                 # name/avatar (Server Component shell)
 │   │   │   ├── recipes/             # own recipes (client-fetched, see below)
 │   │   │   └── favorites/           # favorited recipes (client-fetched)
+│   │   ├── admin/                        # admin panel (role: admin only)
+│   │   │   ├── categories/, ingredients/, recipes/, users/
+│   │   │   └── layout.tsx                # AdminRoute guard + sidebar
 │   │   ├── not-found.tsx   # localized 404
 │   │   └── [...rest]/      # catch-all -> triggers not-found.tsx
 │   └── not-found.tsx       # global fallback (invalid/missing locale)
@@ -67,9 +70,13 @@ src/
 │   ├── recipes/                # RecipeCard, RecipeGrid, FavoriteButton,
 │   │                            # RecipeForm, RecipeImagesField, IngredientPicker,
 │   │                            # StepsField, EditRecipeGuard/Link, CreateRecipeLink
-│   └── profile/                # AvatarUploader, ProfileDetailsForm,
-│                                # OwnRecipesList, FavoritesList, ProfileRecipeCard,
-│                                # DeleteRecipeButton, RemoveFavoriteButton
+│   ├── profile/                # AvatarUploader, ProfileDetailsForm,
+│   │                            # OwnRecipesList, FavoritesList, ProfileRecipeCard,
+│   │                            # DeleteRecipeButton, RemoveFavoriteButton
+│   └── admin/                  # AdminSidebar, AdminModal, AdminDeleteButton,
+│                                # MultilingualNameFields, CategoryManager/Form,
+│                                # IngredientManager/Form, AdminRecipesManager,
+│                                # AdminUsersManager, AdminTable.module.css (shared)
 ├── context/
 │   └── AuthContext.tsx      # user, accessToken, isAuthenticated, role, isLoading
 ├── hooks/
@@ -83,7 +90,7 @@ src/
 │   ├── errors.ts                # errorCode -> translated message
 │   ├── validation.ts            # client-side form validation rules
 │   ├── localizedName.ts          # MultilingualName -> current-locale string, uk fallback
-│   ├── categories.ts, ingredients.ts, recipes.ts, users.ts   # typed API endpoints
+│   ├── categories.ts, ingredients.ts, recipes.ts, users.ts, admin.ts   # typed API endpoints
 ├── proxy.ts                  # next-intl locale routing (Next 16's renamed middleware)
 ├── styles/
 │   ├── globals.css           # CSS variables (colors, spacing, typography) + resets
@@ -223,12 +230,58 @@ Backend repo: https://github.com/Andross-s/home-recipes_back
   rendered from these — `ProfileRecipeCard` is a client-safe twin that
   reuses `RecipeCard`'s own CSS Module instead of duplicating styles.
 
+## Admin panel
+
+`/admin` (role `admin` only, guarded by `components/auth/AdminRoute`) has
+four sections behind a shared sidebar (`AdminSidebar`, highlighting the
+active one the same way the main nav does): Categories, Ingredients,
+Recipes, Users. `/admin` itself just `redirect()`s to `/admin/categories`.
+
+- **Categories & Ingredients** share the same shape: a table (thumbnail,
+  `name.uk` as the primary column with an "incomplete translation" badge
+  whenever `en` or `ka` is empty, group for categories) and an
+  add/edit `AdminModal` built from **`MultilingualNameFields`** — three
+  always-visible UA/EN/KA inputs (not tabs) where only UA is required,
+  matching the backend's curated-dictionary schema. Editing sends the
+  form's current value for all three locales, so an untouched field simply
+  round-trips its existing value while a cleared one is explicitly removed
+  — there's no separate "which locale did you change" tracking needed.
+  Ingredients additionally get a debounced search box (`GET
+  /ingredients?search=&lang=`, scoped to the admin's current locale).
+- **Delete confirmation and 409s**: `AdminDeleteButton` (shared by all four
+  sections) confirms via `window.confirm`, then surfaces a blocked delete
+  inline — e.g. `CATEGORY_IN_USE`/`INGREDIENT_IN_USE` when recipes still
+  reference the entry, or `LAST_ADMIN_PROTECTED` when demoting/deleting
+  the system's only admin — instead of failing silently.
+- **`/admin/recipes`**: reuses the public, unpaginated-filter-aware
+  `getRecipes()`/`getCategories()` (title shown as raw free text, never
+  through `localizedName`; category/group through it). Author names come
+  from a one-off id → name map built from `GET /admin/users` (capped at
+  the backend's 50-per-page max) since the recipe list endpoint doesn't
+  populate `owner` and there's no "look up users by id" endpoint — fine at
+  this project's scale; an owner past the first 50 users falls back to a
+  shortened id instead of breaking.
+- **`/admin/users`**: `GET /admin/users` (search + pagination), a role
+  `<select>` (`PATCH /admin/users/:id/role`), a block toggle (`PATCH
+  .../block`), and an email-verification toggle (`PATCH .../verify` — lets
+  an admin unstick a user behind a broken verification email, or revert a
+  mistaken verification) per row, each showing a row-scoped error on
+  failure rather than a page-wide one, plus delete. The backend
+  independently enforces the "never leave the system without an admin"
+  invariant on both the role and delete paths.
+- **Why every admin list is client-fetched**, even `/admin/categories` and
+  `/admin/recipes` whose underlying `GET` endpoints are public: keeping
+  the fetch-mutate-refresh cycle uniform across all four sections was
+  simpler than mixing a Server Component list with client mutations for
+  two of them and a fully client one (forced by `/admin/users` needing the
+  admin's access token) for the other two.
+
 ## Not implemented yet
 
-The admin panel is a separate follow-up task. Everything else from the
-original scope is done: the app shell (i18n, layout, navigation, API
-client), the full auth flow (register, login, silent refresh, email
-verification, route guards), the recipe catalog (home page,
+Everything from the original scope is done: the app shell (i18n, layout,
+navigation, API client), the full auth flow (register, login, silent
+refresh, email verification, route guards), the recipe catalog (home page,
 filtered/paginated listing, recipe detail, favorites), recipe create/edit
-with multi-photo upload, and the profile pages (name/avatar, own recipes
-with delete, favorites with remove).
+with multi-photo upload, the profile pages (name/avatar, own recipes with
+delete, favorites with remove), and the admin panel (categories,
+ingredients, recipes, users).

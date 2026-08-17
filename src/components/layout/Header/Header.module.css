@@ -25,6 +25,13 @@
   flex-shrink: 0;
 }
 
+/* Lets MobileNav's wrapper div hold a ref for the outside-click listener
+   without disrupting .inner's flex layout — its children (toggle input,
+   label, nav) act as direct flex items, same as before the wrapper existed. */
+.mobileNavRoot {
+  display: contents;
+}
+
 .navToggleInput {
   position: absolute;
   width: 1px;

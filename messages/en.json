@@ -150,7 +150,8 @@
   },
   "Common": {
     "loading": "Loading…",
-    "error": "Something went wrong"
+    "error": "Something went wrong",
+    "close": "Close"
   },
   "Auth": {
     "loginTitle": "Log in",
@@ -203,6 +204,11 @@
     "TOO_MANY_IMAGES": "Too many photos (max 6)",
     "INVALID_JSON_FIELD": "There was a problem with the form data",
     "AVATAR_FILE_REQUIRED": "Choose an image file",
+    "ADMIN_ACCESS_REQUIRED": "This action requires admin privileges",
+    "LAST_ADMIN_PROTECTED": "This is the last admin in the system — this action can't be completed",
+    "INGREDIENT_ALREADY_EXISTS": "An ingredient with this name already exists",
+    "INGREDIENT_IN_USE": "Can't delete this ingredient — recipes still reference it",
+    "CATEGORY_IN_USE": "Can't delete this category — recipes still reference it",
     "DEFAULT": "Something went wrong, please try again"
   },
   "VerifyEmail": {
@@ -221,5 +227,74 @@
     "message": "Verify your email to get full access.",
     "resendButton": "Resend it",
     "resendSuccess": "Email sent"
+  },
+  "Admin": {
+    "title": "Admin panel",
+    "categoriesNav": "Categories",
+    "ingredientsNav": "Ingredients",
+    "recipesNav": "Recipes",
+    "usersNav": "Users",
+
+    "nameUkLabel": "Name (UA)",
+    "nameEnLabel": "Name (EN)",
+    "nameKaLabel": "Name (KA)",
+    "nameUkRequired": "The Ukrainian name is required",
+    "imageLabel": "Image",
+    "invalidImageType": "Only JPEG, PNG, or WEBP images are allowed",
+    "imageTooLarge": "File is too large (max 5 MB)",
+    "save": "Save",
+    "saving": "Saving…",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleting": "Deleting…",
+    "nameColumn": "Name",
+    "actionsColumn": "Actions",
+    "incompleteTranslation": "translation incomplete",
+    "allGroups": "All groups",
+    "groupLabel": "Group",
+    "groupColumn": "Group",
+    "groupRecipes": "Recipes",
+    "groupConservation": "Preserves",
+
+    "categoriesTitle": "Categories",
+    "addCategory": "+ Add category",
+    "editCategory": "Edit category",
+    "noCategories": "No categories yet",
+    "confirmDeleteCategory": "Delete the category \"{name}\"? This can't be undone.",
+
+    "ingredientsTitle": "Ingredients",
+    "addIngredient": "+ Add ingredient",
+    "editIngredient": "Edit ingredient",
+    "searchPlaceholder": "Search by name…",
+    "noIngredients": "No ingredients yet",
+    "confirmDeleteIngredient": "Delete the ingredient \"{name}\"? This can't be undone.",
+
+    "recipesTitle": "Recipes",
+    "searchRecipesPlaceholder": "Search by recipe title…",
+    "noRecipes": "No recipes found",
+    "titleColumn": "Title",
+    "authorColumn": "Author",
+    "categoryColumn": "Category",
+    "dateColumn": "Date",
+    "confirmDeleteRecipe": "Delete the recipe \"{title}\"? This can't be undone.",
+
+    "usersTitle": "Users",
+    "searchUsersPlaceholder": "Search by name or email…",
+    "noUsers": "No users found",
+    "emailColumn": "Email",
+    "roleColumn": "Role",
+    "statusColumn": "Status",
+    "verifiedColumn": "Email verification",
+    "roleUser": "User",
+    "roleAdmin": "Admin",
+    "statusActive": "Active",
+    "statusBlocked": "Blocked",
+    "emailVerified": "Verified",
+    "emailNotVerified": "Not verified",
+    "verifyEmail": "Verify email",
+    "unverifyEmail": "Unverify",
+    "block": "Block",
+    "unblock": "Unblock",
+    "confirmDeleteUser": "Delete the user \"{name}\"? This can't be undone."
   }
 }
