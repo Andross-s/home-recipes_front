@@ -172,7 +172,9 @@
     "backToLogin": "Back to login",
     "resendVerificationPrompt": "Didn't get the email?",
     "resendVerificationLink": "Resend it",
-    "resendVerificationSuccess": "Email sent again"
+    "resendVerificationSuccess": "Email sent again",
+    "orDivider": "or",
+    "continueWithGoogle": "Continue with Google"
   },
   "Validation": {
     "required": "This field is required",
@@ -190,6 +192,8 @@
     "USER_NOT_FOUND": "User not found",
     "EMAIL_ALREADY_VERIFIED": "Email is already verified",
     "VERIFICATION_EMAIL_RATE_LIMITED": "A verification email was already sent recently, try again later",
+  "EMAIL_REGISTERED_WITH_PASSWORD": "This email is already registered — log in with your password instead.",
+  "INVALID_GOOGLE_TOKEN": "Google sign-in failed, please try again",
     "VALIDATION_ERROR": "Please check the form for errors",
     "TOO_MANY_REQUESTS": "Too many attempts, please try again later",
     "NETWORK_ERROR": "Could not reach the server",

@@ -172,7 +172,9 @@
     "backToLogin": "До входу",
     "resendVerificationPrompt": "Не отримали лист?",
     "resendVerificationLink": "Надіслати ще раз",
-    "resendVerificationSuccess": "Лист надіслано ще раз"
+    "resendVerificationSuccess": "Лист надіслано ще раз",
+    "orDivider": "або",
+    "continueWithGoogle": "Продовжити через Google"
   },
   "Validation": {
     "required": "Обов'язкове поле",
@@ -190,6 +192,8 @@
     "USER_NOT_FOUND": "Користувача не знайдено",
     "EMAIL_ALREADY_VERIFIED": "Пошту вже підтверджено",
     "VERIFICATION_EMAIL_RATE_LIMITED": "Лист нещодавно вже надсилався, спробуйте пізніше",
+    "EMAIL_REGISTERED_WITH_PASSWORD": "Ця пошта вже зареєстрована — увійдіть паролем.",
+    "INVALID_GOOGLE_TOKEN": "Не вдалося увійти через Google, спробуйте ще раз",
     "VALIDATION_ERROR": "Перевірте правильність заповнення форми",
     "TOO_MANY_REQUESTS": "Забагато спроб, спробуйте пізніше",
     "NETWORK_ERROR": "Не вдалося з'єднатися із сервером",

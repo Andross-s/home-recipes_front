@@ -6,7 +6,9 @@ import { useAuth } from "@/context/AuthContext";
 import { Link, useRouter } from "@/i18n/navigation";
 import { ApiError } from "@/lib/api";
 import { getErrorMessage } from "@/lib/errors";
+import { useGoogleSignInBridge } from "@/hooks/useGoogleSignInBridge";
 import { validateEmail, validateRequiredPassword, type ValidationKey } from "@/lib/validation";
+import GoogleSignInButton from "@/components/auth/GoogleSignInButton/GoogleSignInButton";
 import styles from "@/components/auth/AuthForm.module.css";
 
 interface FieldErrors {
@@ -20,6 +22,7 @@ export default function LoginForm() {
   const tErrors = useTranslations("Errors");
   const router = useRouter();
   const { login, resendVerification } = useAuth();
+  const { error: googleError, isExchanging } = useGoogleSignInBridge();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -115,6 +118,15 @@ export default function LoginForm() {
       <button type="submit" disabled={isSubmitting} className={styles.submit}>
         {isSubmitting ? t("loginSubmitting") : t("loginSubmit")}
       </button>
+
+      <div className={styles.divider}>{t("orDivider")}</div>
+
+      {googleError && (
+        <div className={styles.formError}>
+          <p>{getErrorMessage(tErrors, googleError)}</p>
+        </div>
+      )}
+      <GoogleSignInButton disabled={isExchanging} />
 
       <p className={styles.switch}>
         {t("noAccount")} <Link href="/register">{t("registerLink")}</Link>

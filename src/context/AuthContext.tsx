@@ -27,6 +27,7 @@ interface AuthContextValue {
   isLoading: boolean;
   role: UserRole | null;
   login: (email: string, password: string) => Promise<void>;
+  loginWithGoogle: (idToken: string) => Promise<void>;
   register: (name: string, email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   verifyEmail: (token: string) => Promise<void>;
@@ -75,6 +76,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const result = await api.post<LoginResponse>(
       "/auth/login",
       { email, password },
+      { auth: false },
+    );
+    setTokens({ accessToken: result.accessToken, refreshToken: result.refreshToken });
+    setUser(result.user);
+  }, []);
+
+  const loginWithGoogle = useCallback(async (idToken: string) => {
+    const result = await api.post<LoginResponse>(
+      "/auth/oauth/google",
+      { idToken },
       { auth: false },
     );
     setTokens({ accessToken: result.accessToken, refreshToken: result.refreshToken });
@@ -148,6 +159,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       isLoading,
       role: user?.role ?? null,
       login,
+      loginWithGoogle,
       register,
       logout,
       verifyEmail,
@@ -161,6 +173,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       accessToken,
       isLoading,
       login,
+      loginWithGoogle,
       register,
       logout,
       verifyEmail,
