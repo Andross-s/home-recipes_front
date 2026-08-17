@@ -150,7 +150,8 @@
   },
   "Common": {
     "loading": "იტვირთება…",
-    "error": "დაფიქსირდა შეცდომა"
+    "error": "დაფიქსირდა შეცდომა",
+    "close": "დახურვა"
   },
   "Auth": {
     "loginTitle": "შესვლა",
@@ -203,6 +204,11 @@
     "TOO_MANY_IMAGES": "ძალიან ბევრი ფოტო (მაქსიმუმ 6)",
     "INVALID_JSON_FIELD": "ფორმის მონაცემებში პრობლემაა",
     "AVATAR_FILE_REQUIRED": "აირჩიეთ სურათის ფაილი",
+    "ADMIN_ACCESS_REQUIRED": "ეს მოქმედება მოითხოვს ადმინისტრატორის უფლებებს",
+    "LAST_ADMIN_PROTECTED": "ეს არის სისტემის ბოლო ადმინისტრატორი — მოქმედება ვერ შესრულდება",
+    "INGREDIENT_ALREADY_EXISTS": "ამ სახელით ინგრედიენტი უკვე არსებობს",
+    "INGREDIENT_IN_USE": "ინგრედიენტის წაშლა შეუძლებელია — მას იყენებენ რეცეპტები",
+    "CATEGORY_IN_USE": "კატეგორიის წაშლა შეუძლებელია — მას იყენებენ რეცეპტები",
     "DEFAULT": "დაფიქსირდა შეცდომა, სცადეთ ხელახლა"
   },
   "VerifyEmail": {
@@ -221,5 +227,74 @@
     "message": "სრული წვდომისთვის დაადასტურეთ თქვენი ელფოსტა.",
     "resendButton": "ხელახლა გაგზავნა",
     "resendSuccess": "წერილი გაიგზავნა"
+  },
+  "Admin": {
+    "title": "ადმინ პანელი",
+    "categoriesNav": "კატეგორიები",
+    "ingredientsNav": "ინგრედიენტები",
+    "recipesNav": "რეცეპტები",
+    "usersNav": "მომხმარებლები",
+
+    "nameUkLabel": "სახელი (UA)",
+    "nameEnLabel": "სახელი (EN)",
+    "nameKaLabel": "სახელი (KA)",
+    "nameUkRequired": "უკრაინული სახელი სავალდებულოა",
+    "imageLabel": "სურათი",
+    "invalidImageType": "დაშვებულია მხოლოდ JPEG, PNG ან WEBP ფორმატის სურათები",
+    "imageTooLarge": "ფაილი ძალიან დიდია (მაქსიმუმ 5 მბ)",
+    "save": "შენახვა",
+    "saving": "ინახება…",
+    "edit": "რედაქტირება",
+    "delete": "წაშლა",
+    "deleting": "იშლება…",
+    "nameColumn": "სახელი",
+    "actionsColumn": "მოქმედებები",
+    "incompleteTranslation": "თარგმანი არასრულია",
+    "allGroups": "ყველა ჯგუფი",
+    "groupLabel": "ჯგუფი",
+    "groupColumn": "ჯგუფი",
+    "groupRecipes": "რეცეპტები",
+    "groupConservation": "კონსერვაცია",
+
+    "categoriesTitle": "კატეგორიები",
+    "addCategory": "+ კატეგორიის დამატება",
+    "editCategory": "კატეგორიის რედაქტირება",
+    "noCategories": "კატეგორიები ჯერ არ არის",
+    "confirmDeleteCategory": "წავშალო კატეგორია „{name}“? ამ მოქმედების გაუქმება შეუძლებელია.",
+
+    "ingredientsTitle": "ინგრედიენტები",
+    "addIngredient": "+ ინგრედიენტის დამატება",
+    "editIngredient": "ინგრედიენტის რედაქტირება",
+    "searchPlaceholder": "ძებნა სახელით…",
+    "noIngredients": "ინგრედიენტები ჯერ არ არის",
+    "confirmDeleteIngredient": "წავშალო ინგრედიენტი „{name}“? ამ მოქმედების გაუქმება შეუძლებელია.",
+
+    "recipesTitle": "რეცეპტები",
+    "searchRecipesPlaceholder": "ძებნა რეცეპტის სახელით…",
+    "noRecipes": "რეცეპტები ვერ მოიძებნა",
+    "titleColumn": "სახელი",
+    "authorColumn": "ავტორი",
+    "categoryColumn": "კატეგორია",
+    "dateColumn": "თარიღი",
+    "confirmDeleteRecipe": "წავშალო რეცეპტი „{title}“? ამ მოქმედების გაუქმება შეუძლებელია.",
+
+    "usersTitle": "მომხმარებლები",
+    "searchUsersPlaceholder": "ძებნა სახელით ან ელფოსტით…",
+    "noUsers": "მომხმარებლები ვერ მოიძებნა",
+    "emailColumn": "ელფოსტა",
+    "roleColumn": "როლი",
+    "statusColumn": "სტატუსი",
+    "verifiedColumn": "ელფოსტის დადასტურება",
+    "roleUser": "მომხმარებელი",
+    "roleAdmin": "ადმინისტრატორი",
+    "statusActive": "აქტიური",
+    "statusBlocked": "დაბლოკილი",
+    "emailVerified": "დადასტურებულია",
+    "emailNotVerified": "არ არის დადასტურებული",
+    "verifyEmail": "ელფოსტის დადასტურება",
+    "unverifyEmail": "დადასტურების გაუქმება",
+    "block": "დაბლოკვა",
+    "unblock": "განბლოკვა",
+    "confirmDeleteUser": "წავშალო მომხმარებელი „{name}“? ამ მოქმედების გაუქმება შეუძლებელია."
   }
 }

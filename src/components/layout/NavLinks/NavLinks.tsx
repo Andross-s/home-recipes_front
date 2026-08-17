@@ -5,10 +5,15 @@ import { useSearchParams } from "next/navigation";
 import { Link, usePathname } from "@/i18n/navigation";
 import styles from "./NavLinks.module.css";
 
+interface NavLinksProps {
+  /** Called after a link is clicked — lets the mobile nav close itself. */
+  onLinkClick?: () => void;
+}
+
 // Pathname from next-intl's usePathname is already locale-stripped (e.g.
 // "/recipes", not "/uk/recipes"), so it can be compared directly against
 // route literals below.
-export default function NavLinks() {
+export default function NavLinks({ onLinkClick }: NavLinksProps) {
   const t = useTranslations("Navigation");
   const pathname = usePathname();
   const group = useSearchParams().get("group");
@@ -24,11 +29,17 @@ export default function NavLinks() {
 
   return (
     <div className={styles.navLinks}>
-      <Link href="/" className={linkClassName(isHome)} aria-current={isHome ? "page" : undefined}>
+      <Link
+        href="/"
+        onClick={onLinkClick}
+        className={linkClassName(isHome)}
+        aria-current={isHome ? "page" : undefined}
+      >
         {t("home")}
       </Link>
       <Link
         href={{ pathname: "/recipes", query: { group: "recipes" } }}
+        onClick={onLinkClick}
         className={linkClassName(isRecipes)}
         aria-current={isRecipes ? "page" : undefined}
       >
@@ -36,6 +47,7 @@ export default function NavLinks() {
       </Link>
       <Link
         href={{ pathname: "/recipes", query: { group: "conservation" } }}
+        onClick={onLinkClick}
         className={linkClassName(isConservation)}
         aria-current={isConservation ? "page" : undefined}
       >
@@ -43,6 +55,7 @@ export default function NavLinks() {
       </Link>
       <Link
         href="/profile/favorites"
+        onClick={onLinkClick}
         className={linkClassName(isFavorites)}
         aria-current={isFavorites ? "page" : undefined}
       >

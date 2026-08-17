@@ -150,7 +150,8 @@
   },
   "Common": {
     "loading": "Завантаження…",
-    "error": "Щось пішло не так"
+    "error": "Щось пішло не так",
+    "close": "Закрити"
   },
   "Auth": {
     "loginTitle": "Увійти",
@@ -203,6 +204,11 @@
     "TOO_MANY_IMAGES": "Забагато фото (максимум 6)",
     "INVALID_JSON_FIELD": "Помилка у даних форми",
     "AVATAR_FILE_REQUIRED": "Оберіть файл зображення",
+    "ADMIN_ACCESS_REQUIRED": "Ця дія потребує прав адміністратора",
+    "LAST_ADMIN_PROTECTED": "Це останній адміністратор у системі — дію неможливо виконати",
+    "INGREDIENT_ALREADY_EXISTS": "Інгредієнт з такою назвою вже існує",
+    "INGREDIENT_IN_USE": "Неможливо видалити інгредієнт — його використовують рецепти",
+    "CATEGORY_IN_USE": "Неможливо видалити категорію — її використовують рецепти",
     "DEFAULT": "Щось пішло не так, спробуйте ще раз"
   },
   "VerifyEmail": {
@@ -221,5 +227,74 @@
     "message": "Підтвердіть свою електронну пошту, щоб отримати повний доступ.",
     "resendButton": "Надіслати ще раз",
     "resendSuccess": "Лист надіслано"
+  },
+  "Admin": {
+    "title": "Адмін-панель",
+    "categoriesNav": "Категорії",
+    "ingredientsNav": "Інгредієнти",
+    "recipesNav": "Рецепти",
+    "usersNav": "Користувачі",
+
+    "nameUkLabel": "Назва (UA)",
+    "nameEnLabel": "Назва (EN)",
+    "nameKaLabel": "Назва (KA)",
+    "nameUkRequired": "Назва українською обов'язкова",
+    "imageLabel": "Зображення",
+    "invalidImageType": "Дозволені лише зображення JPEG, PNG або WEBP",
+    "imageTooLarge": "Файл занадто великий (максимум 5 МБ)",
+    "save": "Зберегти",
+    "saving": "Збереження…",
+    "edit": "Редагувати",
+    "delete": "Видалити",
+    "deleting": "Видалення…",
+    "nameColumn": "Назва",
+    "actionsColumn": "Дії",
+    "incompleteTranslation": "переклад неповний",
+    "allGroups": "Усі групи",
+    "groupLabel": "Група",
+    "groupColumn": "Група",
+    "groupRecipes": "Рецепти",
+    "groupConservation": "Консервація",
+
+    "categoriesTitle": "Категорії",
+    "addCategory": "+ Додати категорію",
+    "editCategory": "Редагування категорії",
+    "noCategories": "Категорій ще немає",
+    "confirmDeleteCategory": "Видалити категорію «{name}»? Цю дію не можна скасувати.",
+
+    "ingredientsTitle": "Інгредієнти",
+    "addIngredient": "+ Додати інгредієнт",
+    "editIngredient": "Редагування інгредієнта",
+    "searchPlaceholder": "Пошук за назвою…",
+    "noIngredients": "Інгредієнтів ще немає",
+    "confirmDeleteIngredient": "Видалити інгредієнт «{name}»? Цю дію не можна скасувати.",
+
+    "recipesTitle": "Рецепти",
+    "searchRecipesPlaceholder": "Пошук за назвою рецепта…",
+    "noRecipes": "Рецептів не знайдено",
+    "titleColumn": "Назва",
+    "authorColumn": "Автор",
+    "categoryColumn": "Категорія",
+    "dateColumn": "Дата",
+    "confirmDeleteRecipe": "Видалити рецепт «{title}»? Цю дію не можна скасувати.",
+
+    "usersTitle": "Користувачі",
+    "searchUsersPlaceholder": "Пошук за іменем або поштою…",
+    "noUsers": "Користувачів не знайдено",
+    "emailColumn": "Пошта",
+    "roleColumn": "Роль",
+    "statusColumn": "Статус",
+    "verifiedColumn": "Підтвердження пошти",
+    "roleUser": "Користувач",
+    "roleAdmin": "Адміністратор",
+    "statusActive": "Активний",
+    "statusBlocked": "Заблокований",
+    "emailVerified": "Підтверджено",
+    "emailNotVerified": "Не підтверджено",
+    "verifyEmail": "Підтвердити пошту",
+    "unverifyEmail": "Скасувати підтвердження",
+    "block": "Заблокувати",
+    "unblock": "Розблокувати",
+    "confirmDeleteUser": "Видалити користувача «{name}»? Цю дію не можна скасувати."
   }
 }

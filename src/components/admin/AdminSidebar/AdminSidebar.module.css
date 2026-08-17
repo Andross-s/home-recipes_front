@@ -1,0 +1,31 @@
+.sidebar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.link {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.link:hover {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.active {
+  background: var(--color-primary);
+  color: var(--color-surface);
+}
+
+@media (min-width: 800px) {
+  .sidebar {
+    flex-direction: column;
+    width: 220px;
+    flex-shrink: 0;
+  }
+}
