@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import { AuthProvider } from "@/context/AuthContext";
+import NextAuthSessionProvider from "@/components/providers/NextAuthSessionProvider";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
 import VerificationBanner from "@/components/auth/VerificationBanner/VerificationBanner";
@@ -29,12 +30,14 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
     <html lang={locale} className={`${notoSans.variable} ${notoSansGeorgian.variable}`}>
       <body>
         <NextIntlClientProvider>
-          <AuthProvider>
-            <Header />
-            <VerificationBanner />
-            <main>{children}</main>
-            <Footer />
-          </AuthProvider>
+          <NextAuthSessionProvider>
+            <AuthProvider>
+              <Header />
+              <VerificationBanner />
+              <main>{children}</main>
+              <Footer />
+            </AuthProvider>
+          </NextAuthSessionProvider>
         </NextIntlClientProvider>
       </body>
     </html>

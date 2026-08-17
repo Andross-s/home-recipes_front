@@ -172,7 +172,9 @@
     "backToLogin": "შესვლაზე დაბრუნება",
     "resendVerificationPrompt": "ვერ მიიღეთ წერილი?",
     "resendVerificationLink": "ხელახლა გაგზავნა",
-    "resendVerificationSuccess": "წერილი ხელახლა გაიგზავნა"
+    "resendVerificationSuccess": "წერილი ხელახლა გაიგზავნა",
+    "orDivider": "ან",
+    "continueWithGoogle": "Google-ით გაგრძელება"
   },
   "Validation": {
     "required": "სავალდებულო ველი",
@@ -190,6 +192,8 @@
     "USER_NOT_FOUND": "მომხმარებელი ვერ მოიძებნა",
     "EMAIL_ALREADY_VERIFIED": "ელფოსტა უკვე დადასტურებულია",
     "VERIFICATION_EMAIL_RATE_LIMITED": "წერილი ახლახან უკვე გაიგზავნა, სცადეთ მოგვიანებით",
+    "EMAIL_REGISTERED_WITH_PASSWORD": "ეს ელფოსტა უკვე დარეგისტრირებულია — შედით პაროლით.",
+    "INVALID_GOOGLE_TOKEN": "Google-ით შესვლა ვერ მოხერხდა, სცადეთ ხელახლა",
     "VALIDATION_ERROR": "გთხოვთ, შეამოწმოთ ფორმის სისწორე",
     "TOO_MANY_REQUESTS": "ძალიან ბევრი მცდელობა, სცადეთ მოგვიანებით",
     "NETWORK_ERROR": "სერვერთან დაკავშირება ვერ მოხერხდა",
